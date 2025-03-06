@@ -1,0 +1,76 @@
+header.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+.left-section {
+  display: flex;
+  align-items: center;
+}
+.logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 1.5em;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.nav-left ul,
+.nav-right ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav-left ul li,
+.nav-right ul li {
+  margin: 0 10px;
+}
+.nav-left ul li a,
+.nav-right ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.95em;
+  white-space: nowrap;
+}
+.nav-right {
+      display: flex;
+      align-items: center;
+    }
+    /* Định dạng cho ô tìm kiếm */
+    .search-form {
+      display: flex;
+      align-items: center;
+      margin-right: 20px; /* khoảng cách giữa ô tìm kiếm và danh sách menu */
+    }
+    .search-form input[type="text"] {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+      font-size: 14px;
+    }
+    .search-form button {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-left: none;
+      background-color: #f8f8f8;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .search-form button:hover {
+      background-color: #e2e2e2;
+    }
+

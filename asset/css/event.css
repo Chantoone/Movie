@@ -1,0 +1,250 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  padding-top: 80px; /* Khoảng cách cho header fixed */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.banner {
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Sections */
+.slider-section {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.section-header h2 {
+  font-size: 1.8em;
+  color: #333;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #5c9836;
+  display: inline-block;
+}
+
+/* Slider container */
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  justify-content: space-between;
+  gap: 2%;
+}
+
+/* Card cho Khuyến mãi & Tin tức */
+.promo-card, .news-card {
+  width: 32%;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.promo-card:hover, .news-card:hover {
+  transform: scale(1.03);
+}
+
+.promo-card img, .news-card img {
+  width: 100%;
+  height: 200px; /* Cố định chiều cao ảnh */
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.promo-card:hover img, .news-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay hiển thị chữ "Xem chi tiết" khi hover */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+.promo-card:hover .overlay, .news-card:hover .overlay {
+  opacity: 1;
+}
+
+/* Thông tin bài (tiêu đề, mô tả) */
+.promo-info, .news-info {
+  padding: 10px;
+}
+
+.promo-info h3, .news-info h3 {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 5px;
+  transition: color 0.3s;
+}
+
+.promo-card:hover .promo-info h3, .news-card:hover .news-info h3 {
+  color: #5c9836;
+}
+
+.promo-info p, .news-info p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Nút mũi tên chuyển slider */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  padding: 8px;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  user-select: none;
+}
+
+.arrow-left {
+  left: 15px;
+}
+
+.arrow-right {
+  right: 15px;
+}
+
+.arrow:hover {
+  background-color: rgba(0,0,0,0.6);
+}
+
+/* Progress bar thay thế cho dots */
+.slider-progress {
+  width: 100%;
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #5c9836;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .slider {
+    flex-wrap: wrap;
+  }
+
+  .promo-card, .news-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container {
+    position: relative;
+    background-color: white;
+    width: 80%;
+    max-width: 800px;
+    padding: 25px;
+    border-radius: 5px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.popup-content {
+    margin-top: 10px;
+}
+
+.popup-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.popup-content h2 {
+    color: #e50914;
+    margin-bottom: 15px;
+}
+
+.popup-content p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}

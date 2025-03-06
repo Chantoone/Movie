@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZCINEMA - Phim đang chiếu</title>
+  <link rel="stylesheet" href="../asset/css/nowShowing.css">
+</head>
+<body>
+
+  <!-- Sử dụng Navbar có sẵn -->
+  <header class="header">
+    <div class="left-section">
+      <div class="logo"><a href="home.html" >ZCINEMA</a></div>
+      <div class="nav-left">
+        <ul>
+          <li><a href="#">Phim đang chiếu</a></li>
+          <li><a href="#">Phim sắp ra mắt</a></li>
+          <li><a href="event.html">Sự kiện / khuyến mãi</a></li>
+          <li><a href="#">Về ZCINEMA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-right">
+      <form action="#" method="GET" class="search-form">
+        <input type="text" placeholder="Tìm kiếm..." name="search">
+        <button type="submit">Tìm</button>
+      </form>
+      <ul>
+        <li><a href="#">Hồ sơ</a></li>
+        <li><a href="#">Đăng xuất</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="banner">
+  <img src="../asset/image/Ngang-02.jpg" alt="Cinema Banner">
+  </div>
+  <!-- Khoảng trống cho header fixed -->
+  <div style="height:80px;"></div>
+
+  <!-- Nội dung chính: Trang "Phim đang chiếu" -->
+  <div class="container">
+    <!-- Thể loại "PHIM MỚI RA MẮT" -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM MỚI RA MẮT</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-moi">
+        <div class="arrow arrow-left" id="prev-moi">&#10094;</div>
+        <div class="movie-slider">
+          <div class="movie-card">
+            <img src="../asset/image/post (30).jpg" alt="Phim mới 1">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim mới 1</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (31).jpg" alt="Phim mới 2">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim mới 2</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (33).jpg" alt="Phim mới 3">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim mới 3</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (35).jpg" alt="Phim mới 4">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim mới 4</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (33).jpg" alt="Phim mới 5">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim mới 5</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (38).jpg" alt="Phim mới 6">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim mới 6</h3></div>
+          </div>
+        </div>
+        <div class="arrow arrow-right" id="next-moi">&#10095;</div>
+      </div>
+      <!-- Các dấu chấm hiển thị vị trí -->
+      <div class="slider-dots" id="dots-moi">
+        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
+      </div>
+    </div>
+
+    <!-- Thể loại "PHIM TÌNH CẢM" -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM TÌNH CẢM</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-tinhcam">
+        <div class="arrow arrow-left" id="prev-tinhcam">&#10094;</div>
+        <div class="movie-slider">
+          <div class="movie-card">
+            <img src="../asset/image/post (30).jpg" alt="Phim 1">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim 1</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (31).jpg" alt="Phim 2">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim 2</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (33).jpg" alt="Phim 3">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim 3</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (35).jpg" alt="Phim 4">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim 4</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (33).jpg" alt="Phim 5">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim 5</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (38).jpg" alt="Phim 6">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim 6</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (40).jpg" alt="Phim 7">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim 7</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (39).jpg" alt="Phim 8">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim 8</h3></div>
+          </div>
+        </div>
+        <div class="arrow arrow-right" id="next-tinhcam">&#10095;</div>
+      </div>
+      <!-- Các dấu chấm hiển thị vị trí -->
+      <div class="slider-dots" id="dots-tinhcam">
+        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
+      </div>
+    </div>
+
+    <!-- Thể loại "PHIM HÀNH ĐỘNG" -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM HÀNH ĐỘNG</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-hanhdong">
+        <div class="arrow arrow-left" id="prev-hanhdong">&#10094;</div>
+        <div class="movie-slider">
+          <div class="movie-card">
+            <img src="../asset/image/post (35).jpg" alt="Phim hành động 1">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hành động 1</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (38).jpg" alt="Phim hành động 2">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hành động 2</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (39).jpg" alt="Phim hành động 3">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hành động 3</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (40).jpg" alt="Phim hành động 4">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hành động 4</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (30).jpg" alt="Phim hành động 5">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hành động 5</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (31).jpg" alt="Phim hành động 6">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hành động 6</h3></div>
+          </div>
+        </div>
+        <div class="arrow arrow-right" id="next-hanhdong">&#10095;</div>
+      </div>
+      <!-- Các dấu chấm hiển thị vị trí -->
+      <div class="slider-dots" id="dots-hanhdong">
+        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
+      </div>
+    </div>
+
+    <!-- Thể loại "PHIM GIA ĐÌNH" -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM GIA ĐÌNH</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-giadinh">
+        <div class="arrow arrow-left" id="prev-giadinh">&#10094;</div>
+        <div class="movie-slider">
+          <div class="movie-card">
+            <img src="../asset/image/post (33).jpg" alt="Phim gia đình 1">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim gia đình 1</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (31).jpg" alt="Phim gia đình 2">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim gia đình 2</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (35).jpg" alt="Phim gia đình 3">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim gia đình 3</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (30).jpg" alt="Phim gia đình 4">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim gia đình 4</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (38).jpg" alt="Phim gia đình 5">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim gia đình 5</h3></div>
+          </div>
+        </div>
+        <div class="arrow arrow-right" id="next-giadinh">&#10095;</div>
+      </div>
+      <!-- Các dấu chấm hiển thị vị trí -->
+      <div class="slider-dots" id="dots-giadinh">
+        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
+      </div>
+    </div>
+
+    <!-- Thể loại "PHIM HOẠT HÌNH" -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM HOẠT HÌNH</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-hoathinh">
+        <div class="arrow arrow-left" id="prev-hoathinh">&#10094;</div>
+        <div class="movie-slider">
+          <div class="movie-card">
+            <img src="../asset/image/post (39).jpg" alt="Phim hoạt hình 1">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hoạt hình 1</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (40).jpg" alt="Phim hoạt hình 2">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hoạt hình 2</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (38).jpg" alt="Phim hoạt hình 3">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hoạt hình 3</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (33).jpg" alt="Phim hoạt hình 4">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hoạt hình 4</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (35).jpg" alt="Phim hoạt hình 5">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hoạt hình 5</h3></div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (31).jpg" alt="Phim hoạt hình 6">
+            <div class="overlay"><span>Đặt vé</span></div>
+            <div class="info"><h3>Phim hoạt hình 6</h3></div>
+          </div>
+        </div>
+        <div class="arrow arrow-right" id="next-hoathinh">&#10095;</div>
+      </div>
+      <!-- Các dấu chấm hiển thị vị trí -->
+      <div class="slider-dots" id="dots-hoathinh">
+        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quy định và chính sách chung</h3>
+        <p>Hotline: 19002099</p>
+        <p>Giờ làm việc: 9:00 - 22:00 (bao gồm cả Lễ, Tết)</p>
+        <p>Email hỗ trợ: <a href="mailto:cskh@bhdstar.vn">cskh@bhdstar.vn</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Hệ</h3>
+        <p>Hệ Thống Rạp</p>
+        <p>Quy định và điều khoản</p>
+        <p>Về ZCINEMA</p>
+        <p>Chăm sóc khách hàng</p>
+      </div>
+      <div class="footer-section">
+        <h3>Thông tin thêm</h3>
+        <p>Cụm Rạp</p>
+        <p>Hướng dẫn đặt vé trực tuyến</p>
+        <p>Quy định thành viên</p>
+        <p>Điều khoản</p>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+<script src="../asset/js/nowShowing.js"></script>
+</html>
