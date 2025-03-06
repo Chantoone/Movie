@@ -1,0 +1,538 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="vi">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8" />-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+<!--  <title>ZCINEMA - Trang chủ</title>-->
+<!--  &lt;!&ndash; Link đến file CSS &ndash;&gt;-->
+<!--  <link rel="stylesheet" href="../asset/css/home_style.css">-->
+<!--  &lt;!&ndash; Link đến file JS (nếu cần, hoặc có thể để script ở cuối body) &ndash;&gt;-->
+<!--  <script src="../asset/js/home.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--  &lt;!&ndash; Header &ndash;&gt;-->
+<!--  <header class="header">-->
+<!--    <div class="left-section">-->
+<!--      <div class="logo">ZCINEMA</div>-->
+<!--      <div class="nav-left">-->
+<!--        <ul>-->
+<!--          <li><a href="#">Thể Loại</a></li>-->
+<!--          <li><a href="#">Phim đang chiếu</a></li>-->
+<!--          <li><a href="#">Phim mới ra mắt</a></li>-->
+<!--          <li><a href="#">Sự kiện / khuyến mãi</a></li>-->
+<!--          <li><a href="#">Về ZCINEMA</a></li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="nav-right">-->
+<!--      <ul>-->
+<!--        <li><a href="#">Hồ sơ</a></li>-->
+<!--        <li><a href="#">Đăng xuất</a></li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </header>-->
+
+<!--  &lt;!&ndash; Slider: Banner phim &ndash;&gt;-->
+<!--  &lt;!&ndash; Bọc các banner trong .slide, thêm mũi tên trái/phải (arrow-left, arrow-right) &ndash;&gt;-->
+<!--  <div class="slider">-->
+<!--    <div class="arrow arrow-left" id="prevBtn">&#10094;</div>-->
+
+<!--    <div class="slide active">-->
+<!--      <img src="../asset/image/Banner_1.jpg" alt="Banner 1">-->
+<!--    </div>-->
+<!--    <div class="slide">-->
+<!--      <img src="../asset/image/Banner_2.jpg" alt="Banner 2">-->
+<!--    </div>-->
+<!--    <div class="slide">-->
+<!--      <img src="../asset/image/Banner_3.webp" alt="Banner 3">-->
+<!--    </div>-->
+
+<!--    <div class="arrow arrow-right" id="nextBtn">&#10095;</div>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Nội dung chính &ndash;&gt;-->
+<!--  <div class="container">-->
+<!--    <div class="movie-section">-->
+<!--      <h2>PHIM MỚI RA MẮT</h2>-->
+<!--      <div class="movie-grid">-->
+<!--        <div class="movie-card">-->
+<!--          <img src="../asset/image/post (1).jpg" alt="Mắt Biếc">-->
+<!--          <div class="info">-->
+<!--            <h3>Mắt Biếc</h3>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="movie-card">-->
+<!--          <img src="../asset/image/post (5).jpg" alt="Mắt Biếc">-->
+<!--          <div class="info">-->
+<!--            <h3>Mắt Biếc</h3>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="movie-card">-->
+<!--          <img src="../asset/image/post (6).jpg" alt="Mắt Biếc">-->
+<!--          <div class="info">-->
+<!--            <h3>Mắt Biếc</h3>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="movie-card">-->
+<!--          <img src="../asset/image/post (4).jpg" alt="Mắt Biếc">-->
+<!--          <div class="info">-->
+<!--            <h3>Mắt Biếc</h3>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Footer &ndash;&gt;-->
+<!--  <footer>-->
+<!--    <div class="footer-content">-->
+<!--      <div class="footer-section">-->
+<!--        <h3>Quy định và chính sách chung</h3>-->
+<!--        <p>Hotline: 19002099</p>-->
+<!--        <p>Giờ làm việc: 9:00 - 22:00 (bao gồm cả Lễ, Tết)</p>-->
+<!--        <p>Email hỗ trợ: <a href="mailto:cskh@bhdstar.vn">cskh@bhdstar.vn</a></p>-->
+<!--      </div>-->
+<!--      <div class="footer-section">-->
+<!--        <h3>Liên Hệ</h3>-->
+<!--        <p>Hệ Thống Rạp</p>-->
+<!--        <p>Quy định và điều khoản</p>-->
+<!--        <p>Về ZCINEMA</p>-->
+<!--        <p>Chăm sóc khách hàng</p>-->
+<!--      </div>-->
+<!--      <div class="footer-section">-->
+<!--        <h3>Thông tin thêm</h3>-->
+<!--        <p>Cụm Rạp</p>-->
+<!--        <p>Hướng dẫn đặt vé trực tuyến</p>-->
+<!--        <p>Quy định thành viên</p>-->
+<!--        <p>Điều khoản</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </footer>-->
+
+<!--  &lt;!&ndash; JavaScript &ndash;&gt;-->
+<!--  <script>-->
+<!--    document.addEventListener("DOMContentLoaded", function() {-->
+<!--      let slides = document.querySelectorAll('.slide');-->
+<!--      let currentSlide = 0;-->
+<!--      function nextSlide() {-->
+<!--        slides[currentSlide].classList.remove('active');-->
+<!--        currentSlide = (currentSlide + 1) % slides.length;-->
+<!--        slides[currentSlide].classList.add('active');-->
+<!--      }-->
+<!--      function prevSlide() {-->
+<!--        slides[currentSlide].classList.remove('active');-->
+<!--        currentSlide = (currentSlide - 1 + slides.length) % slides.length;-->
+<!--        slides[currentSlide].classList.add('active');-->
+<!--      }-->
+<!--      document.getElementById('nextBtn').addEventListener('click', nextSlide);-->
+<!--      document.getElementById('prevBtn').addEventListener('click', prevSlide);-->
+
+<!--      // Tự động chuyển slide mỗi 3 giây (nếu cần)-->
+<!--      setInterval(nextSlide, 3000);-->
+<!--    });-->
+<!--  </script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZCINEMA - Trang chủ</title>
+  <link rel="stylesheet" href="../asset/css/home_style.css">
+</head>
+<body>
+  <script src="../asset/js/home.js"></script>
+  <!-- Header (Fixed) -->
+  <header class="header">
+    <div class="left-section">
+      <div class="logo">ZCINEMA</div>
+      <div class="nav-left">
+        <ul>
+          <li><a href="#">Thể Loại</a></li>
+          <li><a href="#">Phim đang chiếu</a></li>
+          <li><a href="#">Phim mới ra mắt</a></li>
+          <li><a href="#">Sự kiện / khuyến mãi</a></li>
+          <li><a href="#">Về ZCINEMA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#">Hồ sơ</a></li>
+        <li><a href="#">Đăng xuất</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Khoảng trống cho header fixed -->
+  <div style="height:80px;"></div>
+
+  <!-- Slider: Banner phim -->
+  <div class="slider">
+    <div class="arrow arrow-left" id="prevBtn">&#10094;</div>
+    <div class="slide active">
+      <img src="../asset/image/Banner_1.jpg" alt="Banner 1">
+    </div>
+    <div class="slide">
+      <img src="../asset/image/Banner_2.jpg" alt="Banner 2">
+    </div>
+    <div class="slide">
+      <img src="../asset/image/Banner_3.webp" alt="Banner 3">
+    </div>
+    <div class="arrow arrow-right" id="nextBtn">&#10095;</div>
+  </div>
+
+  <!-- Nội dung chính -->
+  <div class="container">
+    <!-- PHIM MỚI RA MẮT -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM MỚI RA MẮT</h2>
+        <a href="#" class="more-link">Xem thêm</a>
+      </div>
+      <div class="movie-slider-wrapper">
+        <div class="arrow arrow-left" id="prevMovie">&#10094;</div>
+        <div class="movie-slider new-slider">
+          <div class="movie-card">
+            <img src="../asset/image/post (1).jpg" alt="Mắt Biếc">
+            <div class="info">
+              <h3>Mắt Biếc</h3>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (5).jpg" alt="Mắt Biếc">
+            <div class="info">
+              <h3>Mắt Biếc</h3>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (6).jpg" alt="Mắt Biếc">
+            <div class="info">
+              <h3>Mắt Biếc</h3>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (4).jpg" alt="Mắt Biếc">
+            <div class="info">
+              <h3>Mắt Biếc</h3>
+            </div>
+          </div>
+          <!-- Thêm poster nếu cần -->
+          <div class="movie-card">
+            <img src="../asset/image/post (1).jpg" alt="Mắt Biếc 2">
+            <div class="info">
+              <h3>Mắt Biếc 2</h3>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (5).jpg" alt="Mắt Biếc 3">
+            <div class="info">
+              <h3>Mắt Biếc 3</h3>
+            </div>
+          </div>
+        </div>
+        <div class="arrow arrow-right" id="nextMovie">&#10095;</div>
+      </div>
+    </div>
+
+    <!-- PHIM ĐANG HOT -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM ĐANG HOT</h2>
+        <a href="#" class="more-link">Xem thêm</a>
+      </div>
+      <div class="movie-slider-wrapper">
+        <div class="arrow arrow-left" id="prevHot">&#10094;</div>
+        <div class="movie-slider hot-slider">
+          <div class="movie-card">
+            <img src="../asset/image/post (1).jpg" alt="Hot Movie 1">
+            <div class="info">
+              <h3>Hot Movie 1</h3>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (5).jpg" alt="Hot Movie 2">
+            <div class="info">
+              <h3>Hot Movie 2</h3>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (6).jpg" alt="Hot Movie 3">
+            <div class="info">
+              <h3>Hot Movie 3</h3>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (4).jpg" alt="Hot Movie 4">
+            <div class="info">
+              <h3>Hot Movie 4</h3>
+            </div>
+          </div>
+          <!-- Thêm poster nếu cần -->
+          <div class="movie-card">
+            <img src="../asset/image/post (1).jpg" alt="Hot Movie 5">
+            <div class="info">
+              <h3>Hot Movie 5</h3>
+            </div>
+          </div>
+          <div class="movie-card">
+            <img src="../asset/image/post (5).jpg" alt="Hot Movie 6">
+            <div class="info">
+              <h3>Hot Movie 6</h3>
+            </div>
+          </div>
+        </div>
+        <div class="arrow arrow-right" id="nextHot">&#10095;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quy định và chính sách chung</h3>
+        <p>Hotline: 19002099</p>
+        <p>Giờ làm việc: 9:00 - 22:00 (bao gồm cả Lễ, Tết)</p>
+        <p>Email hỗ trợ: <a href="mailto:cskh@bhdstar.vn">cskh@bhdstar.vn</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Hệ</h3>
+        <p>Hệ Thống Rạp</p>
+        <p>Quy định và điều khoản</p>
+        <p>Về ZCINEMA</p>
+        <p>Chăm sóc khách hàng</p>
+      </div>
+      <div class="footer-section">
+        <h3>Thông tin thêm</h3>
+        <p>Cụm Rạp</p>
+        <p>Hướng dẫn đặt vé trực tuyến</p>
+        <p>Quy định thành viên</p>
+        <p>Điều khoản</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+<!-- <script>-->
+<!--     // Slider Banner-->
+<!--    document.addEventListener("DOMContentLoaded", function() {-->
+<!--      let slides = document.querySelectorAll('.slide');-->
+<!--      let currentSlide = 0;-->
+<!--      function nextSlide() {-->
+<!--        slides[currentSlide].classList.remove('active');-->
+<!--        currentSlide = (currentSlide + 1) % slides.length;-->
+<!--        slides[currentSlide].classList.add('active');-->
+<!--      }-->
+<!--      function prevSlide() {-->
+<!--        slides[currentSlide].classList.remove('active');-->
+<!--        currentSlide = (currentSlide - 1 + slides.length) % slides.length;-->
+<!--        slides[currentSlide].classList.add('active');-->
+<!--      }-->
+<!--      document.getElementById('nextBtn').addEventListener('click', nextSlide);-->
+<!--      document.getElementById('prevBtn').addEventListener('click', prevSlide);-->
+<!--      setInterval(nextSlide, 3000);-->
+<!--    });-->
+
+<!--    // Movie Slider cho PHIM MỚI RA MẮT-->
+<!--    // let movieSlider = document.querySelector('.movie-slider');-->
+<!--    // let movieCards = document.querySelectorAll('.movie-slider .movie-card');-->
+<!--    // let currentMovieIndex = 0;-->
+<!--    // function updateMovieSlider() {-->
+<!--    //   let cardWidth = movieCards[0].offsetWidth;-->
+<!--    //   movieSlider.style.transform = `translateX(-${currentMovieIndex * cardWidth}px)`;-->
+<!--    // }-->
+<!--    // document.getElementById('nextMovie').addEventListener('click', function() {-->
+<!--    //   if (currentMovieIndex < movieCards.length - 4) {-->
+<!--    //     currentMovieIndex++;-->
+<!--    //     updateMovieSlider();-->
+<!--    //   }-->
+<!--    // });-->
+<!--    // document.getElementById('prevMovie').addEventListener('click', function() {-->
+<!--    //   if (currentMovieIndex > 0) {-->
+<!--    //     currentMovieIndex&#45;&#45;;-->
+<!--    //     updateMovieSlider();-->
+<!--    //   }-->
+<!--    // });-->
+
+
+<!--      let movieSlider = document.querySelector('.movie-slider');-->
+<!--    let movieCards = document.querySelectorAll('.movie-slider .movie-card');-->
+<!--    let currentMovieIndex = 0;-->
+<!--    function updateMovieSlider() {-->
+<!--      let cardWidth = movieCards[0].offsetWidth;-->
+<!--      movieSlider.style.transform = `translateX(-${currentMovieIndex * cardWidth}px)`;-->
+<!--    }-->
+<!--    document.getElementById('nextMovie').addEventListener('click', function() {-->
+<!--      if (currentMovieIndex < movieCards.length - 4) {-->
+<!--        currentMovieIndex++;-->
+<!--        updateMovieSlider();-->
+<!--      }-->
+<!--      else if(currentMovieIndex == movieCards.length - 4) {-->
+<!--        currentMovieIndex=0;-->
+<!--        updateMovieSlider();-->
+<!--      }-->
+<!--    });-->
+<!--    document.getElementById('prevHot').addEventListener('click', function() {-->
+<!--      if (currentMovieIndex > 0) {-->
+<!--        currentMovieIndex&#45;&#45;;-->
+<!--        updateMovieSlider();-->
+<!--      }-->
+<!--    });-->
+
+
+<!--    // Movie Slider cho PHIM ĐANG HOT-->
+<!--    let hotSlider = document.querySelector('.hot-slider');-->
+<!--    let hotCards = document.querySelectorAll('.hot-slider .movie-card');-->
+<!--    let currentHotIndex = 0;-->
+<!--    function updateHotSlider() {-->
+<!--      let cardWidth = hotCards[0].offsetWidth;-->
+<!--      hotSlider.style.transform = `translateX(-${currentHotIndex * cardWidth}px)`;-->
+<!--    }-->
+<!--    document.getElementById('nextHot').addEventListener('click', function() {-->
+<!--      if (currentHotIndex < hotCards.length - 4) {-->
+<!--        currentHotIndex++;-->
+<!--        updateHotSlider();-->
+<!--      }-->
+<!--      else if(currentHotIndex == hotCards.length - 4) {-->
+<!--        currentHotIndex=0;-->
+<!--        updateHotSlider();-->
+<!--      }-->
+<!--    });-->
+<!--    document.getElementById('prevHot').addEventListener('click', function() {-->
+<!--      if (currentHotIndex > 0) {-->
+<!--        currentHotIndex&#45;&#45;;-->
+<!--        updateHotSlider();-->
+<!--      }-->
+<!--    });-->
+<!--  </script>-->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // ========== SLIDER BANNER TRÊN CÙNG ==========
+    let slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+    function prevSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', nextSlide);
+    document.getElementById('prevBtn').addEventListener('click', prevSlide);
+    setInterval(nextSlide, 3000);
+
+    // ========== SLIDER "PHIM MỚI RA MẮT" ==========
+    // let movieSlider = document.querySelector('.movie-slider');
+    // let movieCards = document.querySelectorAll('.movie-slider .movie-card');
+    // let currentMovieIndex = 0;
+    //
+    // function updateMovieSlider() {
+    //   // Tính toán số nhóm có thể hiển thị
+    //   // 4 poster trên 1 màn hình => maxIndex = (tổng poster - 4)
+    //   let totalCards = movieCards.length;
+    //   let maxIndex = totalCards - 4;
+    //   if (maxIndex < 0) maxIndex = 0;  // Trường hợp poster < 4
+    //
+    //   // Vòng lặp index trong [0..maxIndex]
+    //   if (currentMovieIndex < 0) currentMovieIndex = maxIndex;
+    //   if (currentMovieIndex > maxIndex) currentMovieIndex = 0;
+    //
+    //   // Tính khoảng dịch
+    //   let cardWidth = movieCards[0].offsetWidth;
+    //   let shift = currentMovieIndex * cardWidth;
+    //   movieSlider.style.transform = `translateX(-${shift}px)`;
+    // }
+    //
+    // // Nút next (tiến)
+    // document.getElementById('nextMovie').addEventListener('click', function() {
+    //   currentMovieIndex++;
+    //   updateMovieSlider();
+    // });
+    // // Nút prev (lùi)
+    // document.getElementById('prevMovie').addEventListener('click', function() {
+    //   currentMovieIndex--;
+    //   updateMovieSlider();
+    // });
+
+
+    let newSlider = document.querySelector('.new-slider');
+    let newCards = document.querySelectorAll('.new-slider .movie-card');
+    let currentNewIndex = 0;
+
+    function updateNewSlider() {
+      let totalCards = newCards.length;
+      let maxIndex = totalCards - 4;
+      if (maxIndex < 0) maxIndex = 0;
+
+      if (currentNewIndex < 0) currentNewIndex = maxIndex;
+      if (currentNewIndex > maxIndex) currentNewIndex = 0;
+
+      let cardWidth = newCards[0].offsetWidth;
+      let shift = currentNewIndex * cardWidth;
+      newSlider.style.transform = `translateX(-${shift}px)`;
+    }
+
+    document.getElementById('nextMovie').addEventListener('click', function() {
+      currentNewIndex++;
+      updateNewSlider();
+    });
+    document.getElementById('prevMovie').addEventListener('click', function() {
+      currentNewIndex--;
+      updateNewSlider();
+    });
+
+
+
+
+    // ========== SLIDER "PHIM ĐANG HOT" ==========
+    let hotSlider = document.querySelector('.hot-slider');
+    let hotCards = document.querySelectorAll('.hot-slider .movie-card');
+    let currentHotIndex = 0;
+
+    function updateHotSlider() {
+      let totalCards = hotCards.length;
+      let maxIndex = totalCards - 4;
+      if (maxIndex < 0) maxIndex = 0;
+
+      if (currentHotIndex < 0) currentHotIndex = maxIndex;
+      if (currentHotIndex > maxIndex) currentHotIndex = 0;
+
+      let cardWidth = hotCards[0].offsetWidth;
+      let shift = currentHotIndex * cardWidth;
+      hotSlider.style.transform = `translateX(-${shift}px)`;
+    }
+
+    document.getElementById('nextHot').addEventListener('click', function() {
+      currentHotIndex++;
+      updateHotSlider();
+    });
+    document.getElementById('prevHot').addEventListener('click', function() {
+      currentHotIndex--;
+      updateHotSlider();
+    });
+
+    // Khởi tạo vị trí ban đầu (tránh lỗi hiển thị ngay khi load)
+    updateMovieSlider();
+    updateHotSlider();
+
+    // Nếu muốn tự cập nhật khi thay đổi kích thước cửa sổ:
+    window.addEventListener('resize', function() {
+      updateMovieSlider();
+      updateHotSlider();
+    });
+  });
+</script>
+
+
+</body>
+</html>
+
+
+
