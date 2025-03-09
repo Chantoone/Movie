@@ -1,0 +1,102 @@
+.slider {
+  position: relative;
+  width: 95%;
+  height: 700px;
+  overflow: hidden;
+  margin: 10px auto;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide.active {
+  opacity: 1;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  /*object-fit: contain; !* Co lại ảnh thay vì cắt *!*/
+  background-color: #000;
+}
+/* Mũi tên banner */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  user-select: none;
+}
+.arrow.arrow-left {
+  left: 15px;
+}
+.arrow.arrow-right {
+  right: 15px;
+}
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.coming-soon {
+      padding: 20px;
+    }
+    .coming-soon h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #333;
+    }
+    /* Grid cho phần phim: mỗi hàng 4 cột, khoảng cách giữa các phần tử là 20px */
+    .movie-grid {
+        width: 80%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    /* Kiểu cho từng thẻ phim */
+    .movie-card {
+      position: relative;
+      background: #f2f2f2;
+      border-radius: 5px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .movie-card:hover .overlay {
+      opacity: 1;
+    }
+    .movie-card img {
+      width: 100%;
+      height: 90%;
+      display: block;
+    }
+    .movie-card h3 {
+      padding: 10px 0;
+      font-size: 1.1rem;
+      color: #333;
+      margin: 0;
+    }

@@ -1,3 +1,69 @@
+ function initSlider(wrapperId, sliderSelector, prevBtnId, nextBtnId, progressId) {
+        const wrapper = document.getElementById(wrapperId);
+        const slider = wrapper.querySelector(sliderSelector);
+        const items = slider.children;
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+        const progressBar = document.getElementById(progressId).querySelector('.progress-bar');
+
+        // Vị trí hiện tại
+        let position = 0;
+        // Số lượng card hiển thị cùng lúc
+        const showCount = 3;
+        // Tổng số lượng card
+        const totalItems = items.length;
+        // Số lượng card còn lại (không bao gồm 3 card đầu tiên)
+        const remainingItems = totalItems - showCount;
+
+        // Set up ban đầu: hiển thị 3 card đầu tiên
+        for (let i = 0; i < items.length; i++) {
+            if (i < showCount) {
+                items[i].style.display = 'block';
+            } else {
+                items[i].style.display = 'none';
+            }
+        }
+
+        // Cập nhật progress bar
+        function updateProgress() {
+            const progress = (position / remainingItems) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Xử lý click next
+        nextBtn.addEventListener('click', function() {
+            if (position < remainingItems) {
+                // Ẩn card đầu tiên trong khung nhìn hiện tại
+                items[position].style.display = 'none';
+                // Hiển thị card tiếp theo (nằm ngoài khung nhìn hiện tại)
+                items[position + showCount].style.display = 'block';
+                // Tăng vị trí
+                position++;
+                updateProgress();
+            }
+        });
+
+        // Xử lý click previous
+        prevBtn.addEventListener('click', function() {
+            if (position > 0) {
+                // Giảm vị trí
+                position--;
+                // Hiển thị lại card trước đó (đã bị ẩn)
+                items[position].style.display = 'block';
+                // Ẩn card cuối cùng trong khung nhìn hiện tại
+                items[position + showCount].style.display = 'none';
+                updateProgress();
+            }
+        });
+
+        // Khởi tạo progress bar
+        updateProgress();
+    }
+
+    // Khởi tạo slider cho Khuyến mãi
+    initSlider("slider-promo", ".slider", "prev-promo", "next-promo", "progress-promo");
+    // Khởi tạo slider cho Tin tức
+    initSlider("slider-news", ".slider", "prev-news", "next-news", "progress-news");
 const promotions = [
     {
         id: 1,

@@ -1,0 +1,224 @@
+h2 {
+      color: #5c9836;
+      text-align: center;
+    }
+    /* Container cho lựa chọn suất chiếu */
+    .showtime-container, .seat-selection-container {
+      width: 80%;
+      margin: 0 auto 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .movie-detail {
+      width: 80%;
+      margin: 0 auto 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .movie-detail .movie-title {
+      font-size: 4rem;
+      color: #5c9836;
+      margin-bottom: 10px;
+    }
+    .showtime-section {
+      margin-bottom: 20px;
+    }
+    .showtime-section label {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .showtime-buttons button {
+      padding: 10px 15px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      background-color: #fff;
+      border: 1px solid #5c9836;
+      color: #5c9836;
+    }
+    .showtime-buttons button.active {
+      background-color: #5c9836;
+      color: #fff;
+    }
+     .showtime-container h3 {
+      margin: 0 0 20px;
+      color: #5c9836;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    /* Nút Trọn rạp */
+    .cinema-button {
+      padding: 10px 15px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+    .cinema-list {
+      display: none;
+      margin-top: 10px;
+    }
+    .cinema-list button {
+      padding: 8px 12px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #5c9836;
+      border-radius: 3px;
+      background-color: #fff;
+      color: #5c9836;
+      cursor: pointer;
+    }
+    .cinema-list button.active {
+      background-color: #5c9836;
+      color: #fff;
+      border: 1px solid #5c9836;
+    }
+    /* Phần chọn ghế */
+    .seat-map {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 5px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+    .seat {
+      width: 40px;
+      height: 40px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.9rem;
+      border: 1px solid #999;
+    }
+    /* Màu sắc của các loại ghế */
+    .seat.booked {
+      background-color: #ccc; /* Đã đặt */
+      cursor: not-allowed;
+    }
+    .seat.available.regular {
+      background-color: #ffb6c1; /* Ghế thường (hồng) */
+    }
+    .seat.available.vip {
+      background-color: #add8e6; /* Ghế VIP (xanh dương) */
+    }
+    .seat.selected {
+      background-color: #5c9836; !important;/* Đã chọn (xanh lá) */
+      color: #fff; !important;
+    }
+    .seat.available.regular.selected,
+.seat.available.vip.selected {
+  background-color: #5c9836 !important;
+  color: #fff !important;
+}
+
+    /* Legend cho ghế */
+    .legend {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      border-radius: 3px;
+      border: 1px solid #999;
+    }
+.food-order {
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .food-order h3 {
+      text-align: center;
+      color: #5c9836;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+    .food-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+    .food-item {
+      flex: 1 1 calc(33.33% - 20px);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .food-name {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .quantity-selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .quantity-selector button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: #5c9836;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+    .quantity-selector button:hover {
+      background-color: #4a7a2e;
+    }
+    .quantity-selector .quantity {
+      width: 30px;
+      text-align: center;
+      font-size: 1rem;
+      color: #333;
+    }
+    .payment-summary {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+    .total-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #5c9836;
+    }
+    .payment-button {
+      padding: 10px 20px;
+      background-color: #5c9836;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .payment-button:hover {
+      background-color: #4a7a2e;
+    }
