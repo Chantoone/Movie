@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -9,10 +8,10 @@
 </head>
 <body>
 
-  <!-- Sử dụng Navbar có sẵn -->
+  <!-- Navbar -->
   <header class="header">
     <div class="left-section">
-      <div class="logo"><a href="home.html" >ZCINEMA</a></div>
+      <div class="logo"><a href="home.html">ZCINEMA</a></div>
       <div class="nav-left">
         <ul>
           <li><a href="nowShowing.html">Phim đang chiếu</a></li>
@@ -33,254 +32,163 @@
       </ul>
     </div>
   </header>
+
+  <!-- Banner -->
   <div class="banner">
-  <img src="../asset/image/Ngang-02.jpg" alt="Cinema Banner">
+    <img src="../asset/image/Ngang-02.jpg" alt="Cinema Banner">
   </div>
   <!-- Khoảng trống cho header fixed -->
   <div style="height:80px;"></div>
 
-  <!-- Nội dung chính: Trang "Phim đang chiếu" -->
+  <!-- Nội dung chính -->
   <div class="container">
-    <!-- Thể loại "PHIM MỚI RA MẮT" -->
-    <div class="movie-section">
-      <div class="section-header">
-        <h2>PHIM MỚI RA MẮT</h2>
-      </div>
-      <div class="movie-slider-wrapper" id="slider-moi">
-        <div class="arrow arrow-left" id="prev-moi">&#10094;</div>
-        <div class="movie-slider">
-          <div class="movie-card">
-            <img src="../asset/image/post (30).jpg" alt="Phim mới 1">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim mới 1</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (31).jpg" alt="Phim mới 2">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim mới 2</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (33).jpg" alt="Phim mới 3">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim mới 3</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (35).jpg" alt="Phim mới 4">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim mới 4</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (33).jpg" alt="Phim mới 5">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim mới 5</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (38).jpg" alt="Phim mới 6">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim mới 6</h3></div>
-          </div>
-        </div>
-        <div class="arrow arrow-right" id="next-moi">&#10095;</div>
-      </div>
-      <!-- Các dấu chấm hiển thị vị trí -->
-      <div class="slider-dots" id="dots-moi">
-        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
-      </div>
-    </div>
+    <!-- PHIM MỚI RA MẮT (Static) -->
+<!--    <div class="movie-section">-->
+<!--      <div class="section-header">-->
+<!--        <h2>PHIM MỚI RA MẮT</h2>-->
+<!--      </div>-->
+<!--      <div class="movie-slider-wrapper" id="slider-moi">-->
+<!--        <div class="arrow arrow-left" id="prev-moi">&#10094;</div>-->
+<!--        <div class="movie-slider">-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (30).jpg" alt="Phim mới 1">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 1</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (31).jpg" alt="Phim mới 2">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 2</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (33).jpg" alt="Phim mới 3">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 3</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (35).jpg" alt="Phim mới 4">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 4</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (33).jpg" alt="Phim mới 5">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 5</h3></div>-->
+<!--          </div>-->
+<!--          <div class="movie-card">-->
+<!--            <img src="../asset/image/post (38).jpg" alt="Phim mới 6">-->
+<!--            <div class="overlay"><span>Đặt vé</span></div>-->
+<!--            <div class="info"><h3>Phim mới 6</h3></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="arrow arrow-right" id="next-moi">&#10095;</div>-->
+<!--      </div>-->
+<!--      <div class="slider-dots" id="dots-moi"></div>-->
+<!--    </div>-->
 
-    <!-- Thể loại "PHIM TÌNH CẢM" -->
-    <div class="movie-section">
-      <div class="section-header">
-        <h2>PHIM TÌNH CẢM</h2>
-      </div>
-      <div class="movie-slider-wrapper" id="slider-tinhcam">
-        <div class="arrow arrow-left" id="prev-tinhcam">&#10094;</div>
-        <div class="movie-slider">
-          <div class="movie-card">
-            <img src="../asset/image/post (30).jpg" alt="Phim 1">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim 1</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (31).jpg" alt="Phim 2">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim 2</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (33).jpg" alt="Phim 3">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim 3</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (35).jpg" alt="Phim 4">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim 4</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (33).jpg" alt="Phim 5">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim 5</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (38).jpg" alt="Phim 6">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim 6</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (40).jpg" alt="Phim 7">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim 7</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (39).jpg" alt="Phim 8">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim 8</h3></div>
-          </div>
-        </div>
-        <div class="arrow arrow-right" id="next-tinhcam">&#10095;</div>
-      </div>
-      <!-- Các dấu chấm hiển thị vị trí -->
-      <div class="slider-dots" id="dots-tinhcam">
-        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
-      </div>
-    </div>
 
-    <!-- Thể loại "PHIM HÀNH ĐỘNG" -->
+    <!-- PHIM HÀNH ĐỘNG (Dynamic: AJAX) -->
     <div class="movie-section">
       <div class="section-header">
         <h2>PHIM HÀNH ĐỘNG</h2>
       </div>
       <div class="movie-slider-wrapper" id="slider-hanhdong">
         <div class="arrow arrow-left" id="prev-hanhdong">&#10094;</div>
-        <div class="movie-slider">
-          <div class="movie-card">
-            <img src="../asset/image/post (35).jpg" alt="Phim hành động 1">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hành động 1</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (38).jpg" alt="Phim hành động 2">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hành động 2</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (39).jpg" alt="Phim hành động 3">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hành động 3</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (40).jpg" alt="Phim hành động 4">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hành động 4</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (30).jpg" alt="Phim hành động 5">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hành động 5</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (31).jpg" alt="Phim hành động 6">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hành động 6</h3></div>
-          </div>
+        <div class="movie-slider" id="hanhdong">
+          <!-- Các movie-card sẽ được load qua AJAX -->
         </div>
         <div class="arrow arrow-right" id="next-hanhdong">&#10095;</div>
       </div>
-      <!-- Các dấu chấm hiển thị vị trí -->
-      <div class="slider-dots" id="dots-hanhdong">
-        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
+      <div class="slider-dots" id="dots-hanhdong"></div>
+    </div>
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM HOẠT HINH</h2>
       </div>
+      <div class="movie-slider-wrapper" id="slider-hoathinh">
+        <div class="arrow arrow-left" id="prev-hoathinh">&#10094;</div>
+        <div class="movie-slider" id="hoathinh">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-hoathinh">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-hoathinh"></div>
     </div>
 
-    <!-- Thể loại "PHIM GIA ĐÌNH" -->
+    <!-- PHIM HÀI (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM HÀI</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-hai">
+        <div class="arrow arrow-left" id="prev-hai">&#10094;</div>
+        <div class="movie-slider" id="hai">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-hai">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-hai"></div>
+    </div>
+
+    <!-- PHIM GIA ĐÌNH (Dynamic: AJAX) -->
     <div class="movie-section">
       <div class="section-header">
         <h2>PHIM GIA ĐÌNH</h2>
       </div>
       <div class="movie-slider-wrapper" id="slider-giadinh">
         <div class="arrow arrow-left" id="prev-giadinh">&#10094;</div>
-        <div class="movie-slider">
-          <div class="movie-card">
-            <img src="../asset/image/post (33).jpg" alt="Phim gia đình 1">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim gia đình 1</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (31).jpg" alt="Phim gia đình 2">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim gia đình 2</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (35).jpg" alt="Phim gia đình 3">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim gia đình 3</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (30).jpg" alt="Phim gia đình 4">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim gia đình 4</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (38).jpg" alt="Phim gia đình 5">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim gia đình 5</h3></div>
-          </div>
+        <div class="movie-slider" id="giadinh">
+          <!-- Các movie-card sẽ được load qua AJAX -->
         </div>
         <div class="arrow arrow-right" id="next-giadinh">&#10095;</div>
       </div>
-      <!-- Các dấu chấm hiển thị vị trí -->
-      <div class="slider-dots" id="dots-giadinh">
-        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
-      </div>
+      <div class="slider-dots" id="dots-giadinh"></div>
     </div>
 
-    <!-- Thể loại "PHIM HOẠT HÌNH" -->
+    <!-- PHIM KINH DỊ (Dynamic: AJAX) -->
     <div class="movie-section">
       <div class="section-header">
-        <h2>PHIM HOẠT HÌNH</h2>
+        <h2>PHIM KINH DỊ</h2>
       </div>
-      <div class="movie-slider-wrapper" id="slider-hoathinh">
-        <div class="arrow arrow-left" id="prev-hoathinh">&#10094;</div>
-        <div class="movie-slider">
-          <div class="movie-card">
-            <img src="../asset/image/post (39).jpg" alt="Phim hoạt hình 1">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hoạt hình 1</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (40).jpg" alt="Phim hoạt hình 2">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hoạt hình 2</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (38).jpg" alt="Phim hoạt hình 3">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hoạt hình 3</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (33).jpg" alt="Phim hoạt hình 4">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hoạt hình 4</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (35).jpg" alt="Phim hoạt hình 5">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hoạt hình 5</h3></div>
-          </div>
-          <div class="movie-card">
-            <img src="../asset/image/post (31).jpg" alt="Phim hoạt hình 6">
-            <div class="overlay"><span>Đặt vé</span></div>
-            <div class="info"><h3>Phim hoạt hình 6</h3></div>
-          </div>
+      <div class="movie-slider-wrapper" id="slider-kinhdi">
+        <div class="arrow arrow-left" id="prev-kinhdi">&#10094;</div>
+        <div class="movie-slider" id="kinhdi">
+          <!-- Các movie-card sẽ được load qua AJAX -->
         </div>
-        <div class="arrow arrow-right" id="next-hoathinh">&#10095;</div>
+        <div class="arrow arrow-right" id="next-kinhdi">&#10095;</div>
       </div>
-      <!-- Các dấu chấm hiển thị vị trí -->
-      <div class="slider-dots" id="dots-hoathinh">
-        <!-- Dấu chấm sẽ được tạo bằng JavaScript -->
-      </div>
+      <div class="slider-dots" id="dots-kinhdi"></div>
     </div>
 
+    <!-- PHIM LÃNG MẠN (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM LÃNG MẠN</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-langman">
+        <div class="arrow arrow-left" id="prev-langman">&#10094;</div>
+        <div class="movie-slider" id="langman">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-langman">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-langman"></div>
+    </div>
+
+    <!-- PHIM KHOA HỌC VIỄN TƯỞNG (Dynamic: AJAX) -->
+    <div class="movie-section">
+      <div class="section-header">
+        <h2>PHIM KHOA HỌC VIỄN TƯỞNG</h2>
+      </div>
+      <div class="movie-slider-wrapper" id="slider-khoahoc">
+        <div class="arrow arrow-left" id="prev-khoahoc">&#10094;</div>
+        <div class="movie-slider" id="khoahoc">
+          <!-- Các movie-card sẽ được load qua AJAX -->
+        </div>
+        <div class="arrow arrow-right" id="next-khoahoc">&#10095;</div>
+      </div>
+      <div class="slider-dots" id="dots-khoahoc"></div>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -311,5 +219,9 @@
 
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"> </script>
 <script src="../asset/js/nowShowing.js"></script>
+<script>
+
+</script>
 </html>

@@ -213,6 +213,10 @@
     .movie-card:hover .info h3 {
       color: #5c9836;
     }
+    .overlay {
+  cursor: pointer;
+}
+
 
     /* Nút mũi tên chuyển slider cho phim */
     .movie-slider-wrapper .arrow {

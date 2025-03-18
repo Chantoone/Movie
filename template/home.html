@@ -28,9 +28,8 @@
       <input type="text" placeholder="Tìm kiếm..." name="search" />
       <button type="submit">Tìm</button>
        </form>
-      <ul>
-        <li><a href="#">Hồ sơ</a></li>
-        <li><a href="#">Đăng xuất</a></li>
+      <ul id="auth_menu">
+
       </ul>
     </div>
   </header>
@@ -63,7 +62,7 @@
       </div>
       <div class="movie-slider-wrapper">
         <div class="arrow arrow-left" id="prevMovie">&#10094;</div>
-        <div class="movie-slider new-slider">
+        <div class="movie-slider new-slider" id="new">
           <div class="movie-card">
             <img src="../asset/image/post (1).jpg" alt="Mắt Biếc">
             <div class="info">
@@ -184,9 +183,12 @@
     </div>
   </footer>
 
-<script src="../asset/js/home.js"></script>
+
 
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../asset/js/home.js"></script>
+<script type="module" src="../asset/js/auth.js"></script>
 </html>
 

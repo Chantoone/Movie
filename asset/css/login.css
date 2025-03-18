@@ -13,8 +13,8 @@ body{
   grid-template-columns: 1fr 2fr;
   background-color: red;
   background: linear-gradient(to bottom, rgb(6, 108, 100),  rgb(14, 48, 122));
-  width: 800px;
-  height: 400px;
+  width: 900px;
+  height: 500px;
   margin: 10% auto;;
   border-radius: 5px;
 }
@@ -54,6 +54,10 @@ body{
 
 
 .box-2{
+   padding: 20px; /* Thêm padding để tránh các phần tử bị sát lề */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
 
   margin: 5px;
@@ -107,19 +111,16 @@ body{
 
 
 
-.signup-form-container
-{
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-60%);
+.signup-form-container {
+  display: none; /* Ẩn form đăng ký mặc định */
+  width: 100%;
+  max-width: 350px;
   text-align: center;
-  display: none;
 }
-
 
 .signup-form-container h1
 {
+    margin-top: 10px; /* Giảm khoảng cách để không bị tràn */
   color: black;
   font-size: 24px;
   padding: 20px;
