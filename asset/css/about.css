@@ -20,7 +20,7 @@
     }
     .slider {
       position: relative;
-      width: 80%;
+      width: 70%;
       margin: 0 auto;
       overflow: hidden;
       border: 1px solid #ddd;
@@ -28,6 +28,7 @@
       background: #f8f8f8;
     }
     .slides {
+        height: 60%;
       position: relative;
       width: 100%;
     }
@@ -38,9 +39,10 @@
       display: block;
     }
     .slide img {
-      width: 100%;
+      width: 80%;
       height: auto;
       display: block;
+        margin: 0 auto;
     }
     .caption {
       padding: 10px;

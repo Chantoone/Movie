@@ -311,3 +311,11 @@ footer a {
     height: 280px;
   }
 }
+.more-link{
+  color:  #5c9836;
+  cursor: pointer; /* Đổi con trỏ thành dạng tay */
+    transition: background-color 0.3s ease; /* Hiệu ứng hover */
+}
+#profile-btn:hover, #logout-btn:hover, #login-btn:hover {
+    background-color: #4a7b2d; /* Màu xanh đậm hơn khi di chuột */
+}

@@ -1,29 +1,45 @@
-h2 {
-      color: #5c9836;
+/* --- Các style chung --- */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #fff;
+    }
+    h1, h3 {
       text-align: center;
+      color: #5c9836;
     }
-    /* Container cho lựa chọn suất chiếu */
-    .showtime-container, .seat-selection-container {
-      width: 80%;
-      margin: 0 auto 30px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
+    /* --- Phần thông tin phim --- */
     .movie-detail {
       width: 80%;
-      margin: 0 auto 30px;
+      margin: 0 auto 20px;
       padding: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
     }
     .movie-detail .movie-title {
-      font-size: 4rem;
-      color: #5c9836;
+      font-size: 2rem;
       margin-bottom: 10px;
     }
-    .showtime-section {
+    .movie-detail .movie-info p {
+      margin: 10px 0;
+      line-height: 1.6;
+      color: #444;
+    }
+    /* --- Phần chọn suất chiếu --- */
+    .showtime-container {
+      width: 80%;
+      margin: 0 auto 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      position: relative;
+    }
+    .showtime-container h3 {
       margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    .showtime-section {
+      margin-bottom: 15px;
     }
     .showtime-section label {
       font-weight: bold;
@@ -44,41 +60,35 @@ h2 {
       background-color: #5c9836;
       color: #fff;
     }
-     .showtime-container h3 {
-      margin: 0 0 20px;
-      color: #5c9836;
-      text-align: center;
-      font-size: 1.5rem;
-    }
-    /* Nút Trọn rạp */
-    .cinema-button {
+    /* Nút chọn rạp */
+    .cinema-buttons button {
       padding: 10px 15px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      background-color: #fff;
-      cursor: pointer;
-    }
-    .cinema-list {
-      display: none;
-      margin-top: 10px;
-    }
-    .cinema-list button {
-      padding: 8px 12px;
       margin-right: 10px;
       margin-bottom: 10px;
-      border: 1px solid #5c9836;
+      border: none;
       border-radius: 3px;
-      background-color: #fff;
-      color: #5c9836;
       cursor: pointer;
+      background-color: #fff;
+      border: 1px solid #5c9836;
+      color: #5c9836;
     }
-    .cinema-list button.active {
+
+    .cinema-buttons button.active {
       background-color: #5c9836;
       color: #fff;
-      border: 1px solid #5c9836;
+      /*border: 1px solid #5c9836;*/
     }
-    /* Phần chọn ghế */
+    /* --- Phần chọn ghế --- */
+    .seat-selection-container {
+      width: 80%;
+      margin: 0 auto 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .seat-selection-container h3 {
+      margin-bottom: 10px;
+    }
     .seat-map {
       display: grid;
       grid-template-columns: repeat(10, 1fr);
@@ -98,7 +108,6 @@ h2 {
       font-size: 0.9rem;
       border: 1px solid #999;
     }
-    /* Màu sắc của các loại ghế */
     .seat.booked {
       background-color: #ccc; /* Đã đặt */
       cursor: not-allowed;
@@ -110,16 +119,9 @@ h2 {
       background-color: #add8e6; /* Ghế VIP (xanh dương) */
     }
     .seat.selected {
-      background-color: #5c9836; !important;/* Đã chọn (xanh lá) */
-      color: #fff; !important;
+      background-color: #5c9836 !important; /* Đã chọn (xanh lá) */
+      color: #fff !important;
     }
-    .seat.available.regular.selected,
-.seat.available.vip.selected {
-  background-color: #5c9836 !important;
-  color: #fff !important;
-}
-
-    /* Legend cho ghế */
     .legend {
       display: flex;
       justify-content: center;
@@ -137,9 +139,10 @@ h2 {
       border-radius: 3px;
       border: 1px solid #999;
     }
-.food-order {
+    /* --- Phần chọn đồ ăn --- */
+    .food-order {
       width: 80%;
-      margin: 20px auto;
+      margin: 0 auto 20px;
       padding: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
@@ -196,20 +199,24 @@ h2 {
       font-size: 1rem;
       color: #333;
     }
+    /* --- Phần thanh toán chung (tách riêng) --- */
     .payment-summary {
-      margin-top: 20px;
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid #5c9836;
+      border-radius: 5px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #ddd;
-      padding-top: 20px;
+      background-color: #fff;
     }
-    .total-price {
+    .payment-summary .total-price {
       font-size: 1.2rem;
       font-weight: bold;
       color: #5c9836;
     }
-    .payment-button {
+    .payment-summary .payment-button {
       padding: 10px 20px;
       background-color: #5c9836;
       color: #fff;
@@ -219,6 +226,9 @@ h2 {
       font-size: 1rem;
       transition: background-color 0.3s;
     }
-    .payment-button:hover {
+    .payment-summary .payment-button:hover {
       background-color: #4a7a2e;
+    }
+    .movie-title{
+        font-size: xxx-large;
     }

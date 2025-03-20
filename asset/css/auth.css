@@ -1,0 +1,14 @@
+#profile-btn, #logout-btn, #login-btn {
+    /* background-color: #5c9836; !* Màu xanh *!*/
+    /*color: white; !* Màu chữ trắng *!*/
+    /*border: none; !* Không có viền *!*/
+    /*padding: 10px 20px; !* Kích thước nút *!*/
+    /*font-size: 16px; !* Cỡ chữ *!*/
+    /*!*font-weight: bold; !* Chữ in đậm *!*!*/
+    /*border-radius: 5px; !* Bo góc *!*/
+    cursor: pointer; /* Đổi con trỏ thành dạng tay */
+    /*transition: background-color 0.3s ease; !* Hiệu ứng hover *!*/
+}
+/*#profile-btn:hover, #logout-btn:hover, #login-btn:hover {*/
+/*    background-color: #4a7b2d; !* Màu xanh đậm hơn khi di chuột *!*/
+/*}*/
