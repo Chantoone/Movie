@@ -90,12 +90,15 @@
       margin-bottom: 10px;
     }
     .seat-map {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 5px;
+      display: flex;
+        flex-direction: column;
+      /*grid-template-columns: repeat(10, 1fr);*/
+        align-items: center;
+      gap: 15px;
       justify-items: center;
       margin-top: 20px;
     }
+
     .seat {
       width: 40px;
       height: 40px;
@@ -121,6 +124,17 @@
     .seat.selected {
       background-color: #5c9836 !important; /* Đã chọn (xanh lá) */
       color: #fff !important;
+    }
+    .seat-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .row-label {
+      width: 30px;
+      text-align: center;
+      font-weight: bold;
     }
     .legend {
       display: flex;
@@ -232,3 +246,41 @@
     .movie-title{
         font-size: xxx-large;
     }
+    .confirm-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+    width: 800px;
+  max-height: 100vh;
+  overflow-y: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+#confirmPaymentBtn {
+  margin-top: 20px;
+    padding: 10px 20px;
+      background-color: #5c9836;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+}
+#confirmPaymentBtn:hover {
+      background-color: #4a7a2e;
+    }
+

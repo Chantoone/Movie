@@ -140,6 +140,7 @@ body {
   color: #666;
 }
 
+
 /* Nút mũi tên chuyển slider */
 .arrow {
   position: absolute;
@@ -182,6 +183,9 @@ body {
   background-color: #5c9836;
   width: 0;
   transition: width 0.3s ease;
+}
+.overlay{
+     cursor: pointer;
 }
 
 /* Responsive styling */

@@ -181,43 +181,65 @@ header.header {
 }
 
 /* Movie Slider chung cho PHIM MỚI RA MẮT & PHIM ĐANG HOT */
-.movie-slider-wrapper {
-  position: relative;
-  overflow: hidden;
-  width: 95%;
-  margin: 0 auto;
-}
-.movie-slider {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-/* Hiển thị 4 poster cùng lúc */
-.movie-slider .movie-card {
-  flex: 0 0 25%;
-  max-width: 25%;
-  padding: 10px;
-  box-sizing: border-box;
-}
+/*.movie-slider-wrapper {*/
+/*  position: relative;*/
+/*  overflow: hidden;*/
+/*  width: 95%;*/
+/*  margin: 0 auto;*/
+/*}*/
+/*.movie-slider {*/
+/*  display: flex;*/
+/*  transition: transform 0.5s ease;*/
+/*}*/
+/*!* Hiển thị 4 poster cùng lúc *!*/
+/*.movie-slider .movie-card {*/
+/*  flex: 0 0 25%;*/
+/*  max-width: 25%;*/
+/*  padding: 10px;*/
+/*  box-sizing: border-box;*/
+/*}*/
 /* Thẻ phim */
-.movie-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-  text-align: center;
-}
-.movie-card:hover {
-  transform: scale(1.03);
-}
-.movie-card img {
-  width: 100%;
-  height: 400px; /* Chiều cao cố định cho poster */
-  /*object-fit: contain; !* Co lại ảnh mà không cắt *!*/
-  background-color: #fff;
-  display: block;
-}
+.movie-slider-wrapper {
+      position: relative;
+      overflow: hidden;
+      width: 80%;
+      margin: 0 auto;
+      padding-bottom: 30px; /* cho phần dấu chấm bên dưới */
+    }
+
+    /* Slider chứa các phim */
+    .movie-slider {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100%;
+    }
+
+    /* Mỗi thẻ phim – hiển thị 4 phim mỗi lần */
+    .movie-card {
+      flex: 0 0 25%; /* Mỗi phim chiếm 25% chiều rộng của container */
+      padding: 0 10px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+    .movie-card:hover {
+      transform: scale(1.03);
+    }
+    .movie-card img {
+      width: 100%;
+      height: 400px;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .movie-card:hover img {
+      transform: scale(1.05);
+    }
 .movie-card .info {
   padding: 10px;
 }
@@ -226,7 +248,36 @@ header.header {
   margin-bottom: 10px;
   text-align: center;
 }
-
+ .movie-card .overlay {
+      position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    }
+    .movie-card:hover .overlay {
+      opacity: 1;
+    }
+    .movie-card .overlay span {
+  background-color: #5c9836;
+  padding: 8px 15px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+    .overlay {
+  cursor: pointer;
+}
 /* Mũi tên cho Movie Slider */
 .movie-slider-wrapper .arrow {
   position: absolute;
@@ -250,6 +301,24 @@ header.header {
 .movie-slider-wrapper .arrow:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
+.slider-dots {
+      text-align: center;
+      position: relative;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .slider-dots .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      border-radius: 50%;
+      background-color: #ccc;
+      cursor: pointer;
+    }
+    .slider-dots .dot.active {
+      background-color: #5c9836;
+    }
     /*___--------------------------------------------------------------------------------------------------------*/
 /* Footer */
 footer {
