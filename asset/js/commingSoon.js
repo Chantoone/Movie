@@ -32,6 +32,7 @@ function initSlider() {
 
   // Khi DOM đã sẵn sàng
   $(document).ready(function() {
+      initSlider();
     // Gọi AJAX để lấy danh sách banner
     // $.ajax({
     //   url: "http://localhost:8000/movie/banner/", // Backend API
@@ -55,30 +56,64 @@ function initSlider() {
     //     console.error("Lỗi khi gọi API: ", error);
     //   }
     // });
-    $.ajax({
-        url: "http://localhost:8000/film/all",
-        type: "GET",
-        data: { state: "COMING_SOON"},
-        success: function (response){
-            var h2 =$(".movie-grid");
-            response.movies.forEach( function (movie,index) {
-                var imgsrc ="../asset/images/" + movie.poster;
-                var card = $('<div class ="movie-card"></div>');
-                var img =$('<img>').attr("src",imgsrc).attr("alt","phim" +(index+1));
-                var overlay = $('<div class="overlay">Chi tiết</div>').attr('id',movie.id_movie);
-                var h3 = $('<h3>').text(movie.name)
-                overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
-                card.append(img)
-                card.append(overlay)
-                card.append(h3)
-                h2.append(card)
-            })
-        },
-        error: function(xhr, status, error) {
-        console.error("Lỗi khi gọi API: ", error);
-      }
-    })
+    // $.ajax({
+    //     url: "http://localhost:8000/film/all",
+    //     type: "GET",
+    //     data: { state: "COMING_SOON"},
+    //     success: function (response){
+    //         var h2 =$(".movie-grid");
+    //         response.movies.forEach( function (movie,index) {
+    //             var imgsrc ="../asset/images/" + movie.poster;
+    //             var card = $('<div class ="movie-card"></div>');
+    //             var img =$('<img>').attr("src",imgsrc).attr("alt","phim" +(index+1));
+    //             var overlay = $('<div class="overlay">Chi tiết</div>').attr('id',movie.id_movie);
+    //             var h3 = $('<h3>').text(movie.name)
+    //             overlay.on("click", function (){
+    //                 window.location.href="detail.html?id=" + movie.id_movie
+    //                 // window.location.href="detail.html"
+    //             })
+    //             card.append(img)
+    //             card.append(overlay)
+    //             card.append(h3)
+    //             h2.append(card)
+    //         })
+    //     },
+    //     error: function(xhr, status, error) {
+    //     console.error("Lỗi khi gọi API: ", error);
+    //   }
+    // })
+      $.ajax({
+  url: "http://localhost:8000/film/get_by_status_and_genre",
+  type: "GET",
+  data: { state: "COMING_SOON" },
+  success: function (response) {
+    var container = $(".movie-grid");
+    container.empty(); // Xóa dữ liệu cũ nếu có
+
+    if (response.films.length === 0) {
+      container.append("<p>Hiện chưa có phim sắp chiếu.</p>");
+      return;
+    }
+
+    response.films.forEach(function (movie, index) {
+      var posterUrl = movie.poster_path;
+
+      var card = $('<div></div>').addClass("movie-card");
+      var img = $('<img>').attr("src", posterUrl).attr("alt", "phim " + (index + 1));
+      var overlay = $('<div></div>').addClass("overlay").text("Chi tiết").attr("id", movie.id);
+      var h3 = $('<h3></h3>').text(movie.title);
+
+      overlay.on("click", function () {
+        window.location.href = "detail.html?id=" + movie.id;
+      });
+
+      card.append(img, overlay, h3);
+      container.append(card);
+    });
+  },
+  error: function (xhr, status, error) {
+    console.error("Lỗi khi gọi API (COMING_SOON): ", error);
+  }
+});
+
   });
