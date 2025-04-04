@@ -88,200 +88,239 @@ function initSlider(wrapperId) {
   updateSlider();
 }
 
+// $(document).ready(function () {
+//   // Phim Hành Động
+//   $.ajax({
+//     url: "http://localhost:8000/film/get_by_status_and_genre",
+//     type: "GET",
+//     data: { state: "NOW_SHOWING", type_id: 3 }, // Thay 28 bằng type_id của Phim Hành Động
+//     success: function (response) {
+//       var slider = $("#hanhdong");
+//       response.films.forEach(function (movie, index) {
+//         var posterUrl =  movie.poster_path;
+//         var card = $("<div></div>").addClass("movie-card");
+//         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hanh dong");
+//         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
+//         overlay.on("click", function (){
+//                     window.location.href="detail.html?id=" + movie.id
+//                     // window.location.href="detail.html"
+//                 })
+//         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.title));
+//         card.append(img, overlay, info);
+//         slider.append(card);
+//       });
+//       console.log("Phim Hành Động loaded");
+//       initSlider("slider-hanhdong");
+//     },
+//     error: function(xhr, status, error) {
+//       console.error("Lỗi khi gọi API (Phim Hành Động): ", error);
+//     }
+//   });
+//
+//   // Phim Hoạt Hình
+//   $.ajax({
+//     url: "http://localhost:8000/film/all",
+//     type: "GET",
+//     data: { state: "NOW_SHOWING", type_id: 16 }, // Thay 29 bằng type_id của Phim Hoạt Hình
+//     success: function (response) {
+//       var slider = $("#hoathinh");
+//       response.movies.forEach(function (movie, index) {
+//         var posterUrl = "../asset/images/" + movie.poster;
+//         var card = $("<div></div>").addClass("movie-card");
+//         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hoat hinh");
+//         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
+//         overlay.on("click", function (){
+//                     window.location.href="detail.html?id=" + movie.id_movie
+//                     // window.location.href="detail.html"
+//                 })
+//         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
+//         card.append(img, overlay, info);
+//         slider.append(card);
+//       });
+//       console.log("Phim Hoạt Hình loaded");
+//       initSlider("slider-hoathinh");
+//     },
+//     error: function(xhr, status, error) {
+//       console.error("Lỗi khi gọi API (Phim Hoạt Hình): ", error);
+//     }
+//   });
+//
+//   // Phim Hài
+//   $.ajax({
+//     url: "http://localhost:8000/film/all",
+//     type: "GET",
+//     data: { state: "NOW_SHOWING", type_id: 35 }, // Thay 30 bằng type_id của Phim Hài
+//     success: function (response) {
+//       var slider = $("#hai");
+//       response.movies.forEach(function (movie, index) {
+//         var posterUrl = "../asset/images/" + movie.poster;
+//         var card = $("<div></div>").addClass("movie-card");
+//         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hai");
+//         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
+//         overlay.on("click", function (){
+//                     window.location.href="detail.html?id=" + movie.id_movie
+//                     // window.location.href="detail.html"
+//                 })
+//         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
+//         card.append(img, overlay, info);
+//         slider.append(card);
+//       });
+//       console.log("Phim Hài loaded");
+//       initSlider("slider-hai");
+//     },
+//     error: function(xhr, status, error) {
+//       console.error("Lỗi khi gọi API (Phim Hài): ", error);
+//     }
+//   });
+//
+//   // Phim Gia Đình
+//   $.ajax({
+//     url: "http://localhost:8000/film/all",
+//     type: "GET",
+//     data: { state: "NOW_SHOWING", type_id: 10751 }, // Thay 31 bằng type_id của Phim Gia Đình
+//     success: function (response) {
+//       var slider = $("#giadinh");
+//       response.movies.forEach(function (movie, index) {
+//         var posterUrl = "../asset/images/" + movie.poster;
+//         var card = $("<div></div>").addClass("movie-card");
+//         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim gia dinh");
+//         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
+//         overlay.on("click", function (){
+//                     window.location.href="detail.html?id=" + movie.id_movie
+//                     // window.location.href="detail.html"
+//                 })
+//         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
+//         card.append(img, overlay, info);
+//         slider.append(card);
+//       });
+//       console.log("Phim Gia Đình loaded");
+//       initSlider("slider-giadinh");
+//     },
+//     error: function(xhr, status, error) {
+//       console.error("Lỗi khi gọi API (Phim Gia Đình): ", error);
+//     }
+//   });
+//
+//   // Phim Kinh Dị
+//   $.ajax({
+//     url: "http://localhost:8000/film/all",
+//     type: "GET",
+//     data: { state: "NOW_SHOWING", type_id: 27 }, // Thay 32 bằng type_id của Phim Kinh Dị
+//     success: function (response) {
+//       var slider = $("#kinhdi");
+//       response.movies.forEach(function (movie, index) {
+//         var posterUrl = "../asset/images/" + movie.poster;
+//         var card = $("<div></div>").addClass("movie-card");
+//         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim kinh di");
+//         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
+//         overlay.on("click", function (){
+//                     window.location.href="detail.html?id=" + movie.id_movie
+//                     // window.location.href="detail.html"
+//                 })
+//         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
+//         card.append(img, overlay, info);
+//         slider.append(card);
+//       });
+//       console.log("Phim Kinh Dị loaded");
+//       initSlider("slider-kinhdi");
+//     },
+//     error: function(xhr, status, error) {
+//       console.error("Lỗi khi gọi API (Phim Kinh Dị): ", error);
+//     }
+//   });
+//
+//   // Phim Lãng Mạn
+//   $.ajax({
+//     url: "http://localhost:8000/film/all",
+//     type: "GET",
+//     data: { state: "NOW_SHOWING", type_id: 10749 }, // Thay 33 bằng type_id của Phim Lãng Mạn
+//     success: function (response) {
+//       var slider = $("#langman");
+//       response.movies.forEach(function (movie, index) {
+//         var posterUrl = "../asset/images/" + movie.poster;
+//         var card = $("<div></div>").addClass("movie-card");
+//         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim lang man");
+//         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
+//         overlay.on("click", function (){
+//                     window.location.href="detail.html?id=" + movie.id_movie
+//                     // window.location.href="detail.html"
+//                 })
+//         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
+//         card.append(img, overlay, info);
+//         slider.append(card);
+//       });
+//       console.log("Phim Lãng Mạn loaded");
+//       initSlider("slider-langman");
+//     },
+//     error: function(xhr, status, error) {
+//       console.error("Lỗi khi gọi API (Phim Lãng Mạn): ", error);
+//     }
+//   });
+//
+//   // Phim Khoa Học Viễn Tưởng
+//   $.ajax({
+//     url: "http://localhost:8000/film/all",
+//     type: "GET",
+//     data: { state: "NOW_SHOWING", type_id: 878 }, // Thay 34 bằng type_id của Phim Khoa Học Viễn Tưởng
+//     success: function (response) {
+//       var slider = $("#khoahoc");
+//       response.movies.forEach(function (movie, index) {
+//         var posterUrl = "../asset/images/" + movie.poster;
+//         var card = $("<div></div>").addClass("movie-card");
+//         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim khoa hoc");
+//         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
+//         overlay.on("click", function (){
+//                     window.location.href="detail.html?id=" + movie.id_movie
+//                     // window.location.href="detail.html"
+//                 })
+//         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
+//         card.append(img, overlay, info);
+//         slider.append(card);
+//       });
+//       console.log("Phim Khoa Học Viễn Tưởng loaded");
+//       initSlider("slider-khoahoc");
+//     },
+//     error: function(xhr, status, error) {
+//       console.error("Lỗi khi gọi API (Phim Khoa Học Viễn Tưởng): ", error);
+//     }
+//   });
+// });
 $(document).ready(function () {
-  // Phim Hành Động
-  $.ajax({
-    url: "http://localhost:8000/film/all",
-    type: "GET",
-    data: { state: "NOW_SHOWING", type_id: 28 }, // Thay 28 bằng type_id của Phim Hành Động
-    success: function (response) {
-      var slider = $("#hanhdong");
-      response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
-        var card = $("<div></div>").addClass("movie-card");
-        var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hanh dong");
-        var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
-        overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
-        var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
-        card.append(img, overlay, info);
-        slider.append(card);
-      });
-      console.log("Phim Hành Động loaded");
-      initSlider("slider-hanhdong");
-    },
-    error: function(xhr, status, error) {
-      console.error("Lỗi khi gọi API (Phim Hành Động): ", error);
-    }
-  });
+  const genreConfigs = [
+    { id: 3, element: "#hanhdong", sliderId: "slider-hanhdong", alt: "phim hanh dong", log: "Phim Hành Động" },
+    { id: 4, element: "#hoathinh", sliderId: "slider-hoathinh", alt: "phim hoat hinh", log: "Phim Hoạt Hình" },
+    { id: 5, element: "#hai", sliderId: "slider-hai", alt: "phim hai", log: "Phim Hài" },
+    { id: 6, element: "#giadinh", sliderId: "slider-giadinh", alt: "phim gia dinh", log: "Phim Gia Đình" },
+    { id: 7, element: "#kinhdi", sliderId: "slider-kinhdi", alt: "phim kinh di", log: "Phim Kinh Dị" },
+    { id: 8, element: "#langman", sliderId: "slider-langman", alt: "phim lang man", log: "Phim Lãng Mạn" },
+    { id: 9, element: "#khoahoc", sliderId: "slider-khoahoc", alt: "phim khoa hoc", log: "Phim Khoa Học Viễn Tưởng" },
+  ];
 
-  // Phim Hoạt Hình
-  $.ajax({
-    url: "http://localhost:8000/film/all",
-    type: "GET",
-    data: { state: "NOW_SHOWING", type_id: 16 }, // Thay 29 bằng type_id của Phim Hoạt Hình
-    success: function (response) {
-      var slider = $("#hoathinh");
-      response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
-        var card = $("<div></div>").addClass("movie-card");
-        var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hoat hinh");
-        var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
-        overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
-        var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
-        card.append(img, overlay, info);
-        slider.append(card);
-      });
-      console.log("Phim Hoạt Hình loaded");
-      initSlider("slider-hoathinh");
-    },
-    error: function(xhr, status, error) {
-      console.error("Lỗi khi gọi API (Phim Hoạt Hình): ", error);
-    }
-  });
-
-  // Phim Hài
-  $.ajax({
-    url: "http://localhost:8000/film/all",
-    type: "GET",
-    data: { state: "NOW_SHOWING", type_id: 35 }, // Thay 30 bằng type_id của Phim Hài
-    success: function (response) {
-      var slider = $("#hai");
-      response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
-        var card = $("<div></div>").addClass("movie-card");
-        var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hai");
-        var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
-        overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
-        var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
-        card.append(img, overlay, info);
-        slider.append(card);
-      });
-      console.log("Phim Hài loaded");
-      initSlider("slider-hai");
-    },
-    error: function(xhr, status, error) {
-      console.error("Lỗi khi gọi API (Phim Hài): ", error);
-    }
-  });
-
-  // Phim Gia Đình
-  $.ajax({
-    url: "http://localhost:8000/film/all",
-    type: "GET",
-    data: { state: "NOW_SHOWING", type_id: 10751 }, // Thay 31 bằng type_id của Phim Gia Đình
-    success: function (response) {
-      var slider = $("#giadinh");
-      response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
-        var card = $("<div></div>").addClass("movie-card");
-        var img = $("<img>").attr("src", posterUrl).attr("alt", "phim gia dinh");
-        var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
-        overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
-        var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
-        card.append(img, overlay, info);
-        slider.append(card);
-      });
-      console.log("Phim Gia Đình loaded");
-      initSlider("slider-giadinh");
-    },
-    error: function(xhr, status, error) {
-      console.error("Lỗi khi gọi API (Phim Gia Đình): ", error);
-    }
-  });
-
-  // Phim Kinh Dị
-  $.ajax({
-    url: "http://localhost:8000/film/all",
-    type: "GET",
-    data: { state: "NOW_SHOWING", type_id: 27 }, // Thay 32 bằng type_id của Phim Kinh Dị
-    success: function (response) {
-      var slider = $("#kinhdi");
-      response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
-        var card = $("<div></div>").addClass("movie-card");
-        var img = $("<img>").attr("src", posterUrl).attr("alt", "phim kinh di");
-        var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
-        overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
-        var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
-        card.append(img, overlay, info);
-        slider.append(card);
-      });
-      console.log("Phim Kinh Dị loaded");
-      initSlider("slider-kinhdi");
-    },
-    error: function(xhr, status, error) {
-      console.error("Lỗi khi gọi API (Phim Kinh Dị): ", error);
-    }
-  });
-
-  // Phim Lãng Mạn
-  $.ajax({
-    url: "http://localhost:8000/film/all",
-    type: "GET",
-    data: { state: "NOW_SHOWING", type_id: 10749 }, // Thay 33 bằng type_id của Phim Lãng Mạn
-    success: function (response) {
-      var slider = $("#langman");
-      response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
-        var card = $("<div></div>").addClass("movie-card");
-        var img = $("<img>").attr("src", posterUrl).attr("alt", "phim lang man");
-        var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
-        overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
-        var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
-        card.append(img, overlay, info);
-        slider.append(card);
-      });
-      console.log("Phim Lãng Mạn loaded");
-      initSlider("slider-langman");
-    },
-    error: function(xhr, status, error) {
-      console.error("Lỗi khi gọi API (Phim Lãng Mạn): ", error);
-    }
-  });
-
-  // Phim Khoa Học Viễn Tưởng
-  $.ajax({
-    url: "http://localhost:8000/film/all",
-    type: "GET",
-    data: { state: "NOW_SHOWING", type_id: 878 }, // Thay 34 bằng type_id của Phim Khoa Học Viễn Tưởng
-    success: function (response) {
-      var slider = $("#khoahoc");
-      response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
-        var card = $("<div></div>").addClass("movie-card");
-        var img = $("<img>").attr("src", posterUrl).attr("alt", "phim khoa hoc");
-        var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
-        overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
-        var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
-        card.append(img, overlay, info);
-        slider.append(card);
-      });
-      console.log("Phim Khoa Học Viễn Tưởng loaded");
-      initSlider("slider-khoahoc");
-    },
-    error: function(xhr, status, error) {
-      console.error("Lỗi khi gọi API (Phim Khoa Học Viễn Tưởng): ", error);
-    }
+  genreConfigs.forEach(function (genre) {
+    $.ajax({
+      url: "http://localhost:8000/film/get_by_status_and_genre",
+      type: "GET",
+      data: { state: "NOW_SHOWING", type_id: genre.id },
+      success: function (response) {
+        var slider = $(genre.element);
+        response.films.forEach(function (movie) {
+          var posterUrl = movie.poster_path;
+          var card = $("<div></div>").addClass("movie-card");
+          var img = $("<img>").attr("src", posterUrl).attr("alt", genre.alt);
+          var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
+          overlay.on("click", function () {
+            window.location.href = "detail.html?id=" + movie.id;
+          });
+          var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.title));
+          card.append(img, overlay, info);
+          slider.append(card);
+        });
+        console.log(genre.log + " loaded");
+        initSlider(genre.sliderId);
+      },
+      error: function (xhr, status, error) {
+        console.error("Lỗi khi gọi API (" + genre.log + "): ", error);
+      }
+    });
   });
 });
