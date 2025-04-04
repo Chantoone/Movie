@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Chi tiết</title>
-    <link rel="stylesheet" href="../asset/css/footer.css">
-    <link rel="stylesheet" href="../asset/css/navbar.css">
-    <link rel="stylesheet" href="../asset/css/detail.css">
-    <link rel="stylesheet" href="../asset/css/auth.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi tiết</title>
+  <link rel="stylesheet" href="../asset/css/footer.css">
+  <link rel="stylesheet" href="../asset/css/navbar.css">
+  <link rel="stylesheet" href="../asset/css/detail.css">
+  <link rel="stylesheet" href="../asset/css/auth.css">
 </head>
+
 <body>
-<header class="header">
+  <header class="header">
     <div class="left-section">
       <div class="logo"><a href="home.html">ZCINEMA</a></div>
       <div class="nav-left">
         <ul>
-<!--          <li><a href="#">Thể Loại</a></li>-->
+          <!--          <li><a href="#">Thể Loại</a></li>-->
           <li><a href="nowShowing.html">Phim đang chiếu</a></li>
           <li><a href="commingSoon.html">Phim sắp ra mắt</a></li>
           <li><a href="event.html">Sự kiện / khuyến mãi</a></li>
@@ -25,9 +27,9 @@
     </div>
     <div class="nav-right">
       <form action="#" method="GET" class="search-form">
-      <input type="text" placeholder="Tìm kiếm..." name="search" />
-      <button type="submit">Tìm</button>
-       </form>
+        <input type="text" placeholder="Tìm kiếm..." name="search" />
+        <button type="submit">Tìm</button>
+      </form>
       <ul id="auth_menu">
 
       </ul>
@@ -36,27 +38,27 @@
 
   <!-- Khoảng trống cho header fixed -->
   <div style="height:80px;"></div>
-    <div class="movie-detail">
+  <div class="movie-detail">
     <div class="movie-info-container">
       <!-- Phần poster -->
       <div class="movie-poster">
-<!--        <img src="../asset/image/post (69).jpg" alt="Poster của phim">-->
+        <!--        <img src="../asset/image/post (69).jpg" alt="Poster của phim">-->
       </div>
       <!-- Phần thông tin phim -->
       <div class="movie-info-text">
-<!--        <h1 class="movie-title">KUNG FU PANDA 4</h1>-->
-        
+        <!--        <h1 class="movie-title">KUNG FU PANDA 4</h1>-->
+
         <div class="movie-info">
-<!--          <p><strong>Nội dung:</strong> Sau khi Po được chọn trở thành Thủ lĩnh tinh thần của Thung lũng Bình Yên, Po cần tìm và huấn luyện một Chiến binh Rồng mới, trong khi đó một mụ phù thủy độc ác lên kế hoạch triệu hồi lại tất cả những kẻ phản diện mà Po đã đánh bại về cõi linh hồn.</p>-->
-<!--          <p><strong>Diễn viên:</strong> (Đang cập nhật)</p>-->
-<!--          <p><strong>Đạo diễn:</strong> (Đang cập nhật)</p>-->
-<!--          <p><strong>Thể loại:</strong> Phim hoạt hình</p>-->
-<!--          <p><strong>Ngôn ngữ:</strong> Phụ đề tiếng Việt</p>-->
-<!--          <p><strong>Thời lượng:</strong> 94 phút</p>-->
+          <!--          <p><strong>Nội dung:</strong> Sau khi Po được chọn trở thành Thủ lĩnh tinh thần của Thung lũng Bình Yên, Po cần tìm và huấn luyện một Chiến binh Rồng mới, trong khi đó một mụ phù thủy độc ác lên kế hoạch triệu hồi lại tất cả những kẻ phản diện mà Po đã đánh bại về cõi linh hồn.</p>-->
+          <!--          <p><strong>Diễn viên:</strong> (Đang cập nhật)</p>-->
+          <!--          <p><strong>Đạo diễn:</strong> (Đang cập nhật)</p>-->
+          <!--          <p><strong>Thể loại:</strong> Phim hoạt hình</p>-->
+          <!--          <p><strong>Ngôn ngữ:</strong> Phụ đề tiếng Việt</p>-->
+          <!--          <p><strong>Thời lượng:</strong> 94 phút</p>-->
         </div>
         <div class="movie-actions">
-<!--            <button class="choose-seat">Chọn ghế</button>-->
-<!--          <button class="trailer">Trailer</button>-->
+          <!--            <button class="choose-seat">Chọn ghế</button>-->
+          <!--          <button class="trailer">Trailer</button>-->
         </div>
       </div>
     </div>
@@ -76,7 +78,21 @@
 
     <a href="#" class="load-more" id="loadMoreBtn">TẢI THÊM BÌNH LUẬN</a>
   </div>
-    <footer>
+
+  <!-- Phần đánh giá -->
+  <div class="rating-section">
+    <h2>Đánh giá phim:</h2>
+    <div class="stars">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+    <p id="ratingMessage">Hãy chọn số sao để đánh giá!</p>
+  </div>
+
+  <footer>
     <div class="footer-content">
       <div class="footer-section">
         <h3>Quy định và chính sách chung</h3>
@@ -105,5 +121,6 @@
 </script>
 
 <script type="module" src="../asset/js/auth.js"></script>
-<script src="../asset/js/detail.js" type="module" ></script>
+<script src="../asset/js/detail.js" type="module"></script>
+
 </html>
