@@ -9,6 +9,121 @@
   <link rel="stylesheet" href="../asset/css/navbar.css">
   <link rel="stylesheet" href="../asset/css/detail.css">
   <link rel="stylesheet" href="../asset/css/auth.css">
+  <style>
+    /* CSS cho phần đánh giá phim */
+    .rating-section {
+      background-color: #f8f8f8;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin: 30px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .rating-section h2 {
+      margin-bottom: 15px;
+      color: #333;
+      font-size: 22px;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .star {
+      font-size: 30px;
+      color: #ddd;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .star:hover,
+    .star.active {
+      color: #ffcc00;
+    }
+
+    #ratingMessage {
+      font-size: 16px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .rating-stats {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .rating-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin: 0 15px;
+    }
+
+    .rating-count {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* CSS cho phần bình luận */
+    .comment-section {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+      min-height: 100px;
+      margin-bottom: 15px;
+      font-family: inherit;
+    }
+
+    .comment-form button {
+      background-color: #e71a0f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .comment-form button:hover {
+      background-color: #c91000;
+    }
+
+    .comments {
+      margin-top: 30px;
+    }
+
+    .load-more {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #e71a0f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .load-more:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
@@ -64,6 +179,30 @@
     </div>
   </div>
 
+  <!-- Phần đánh giá - đã di chuyển lên trên phần bình luận -->
+  <div class="rating-section">
+    <h2>Đánh giá phim:</h2>
+    <div class="stars">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+      <span class="star" data-value="6">&#9733;</span>
+      <span class="star" data-value="7">&#9733;</span>
+      <span class="star" data-value="8">&#9733;</span>
+      <span class="star" data-value="9">&#9733;</span>
+      <span class="star" data-value="10">&#9733;</span>
+    </div>
+    <p id="ratingMessage">Hãy chọn từ 1-10 sao để đánh giá!</p>
+
+    <div class="rating-stats">
+      <span class="rating-count">128 lượt đánh giá</span>
+      <span class="rating-value">8.5</span>
+      <span class="rating-count">điểm trung bình</span>
+    </div>
+  </div>
+
   <!-- Phần bình luận -->
   <div class="comment-section">
     <h2>Hãy để lại bình luận:</h2>
@@ -77,19 +216,6 @@
     </div>
 
     <a href="#" class="load-more" id="loadMoreBtn">TẢI THÊM BÌNH LUẬN</a>
-  </div>
-
-  <!-- Phần đánh giá -->
-  <div class="rating-section">
-    <h2>Đánh giá phim:</h2>
-    <div class="stars">
-      <span class="star" data-value="1">&#9733;</span>
-      <span class="star" data-value="2">&#9733;</span>
-      <span class="star" data-value="3">&#9733;</span>
-      <span class="star" data-value="4">&#9733;</span>
-      <span class="star" data-value="5">&#9733;</span>
-    </div>
-    <p id="ratingMessage">Hãy chọn số sao để đánh giá!</p>
   </div>
 
   <footer>
@@ -122,5 +248,62 @@
 
 <script type="module" src="../asset/js/auth.js"></script>
 <script src="../asset/js/detail.js" type="module"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.star');
+    const ratingMessage = document.getElementById('ratingMessage');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('mouseover', function () {
+        const value = parseInt(this.getAttribute('data-value'));
+        highlightStars(value);
+
+        // Cập nhật thông báo dựa trên số sao
+        updateRatingMessage(value);
+      });
+
+      star.addEventListener('mouseout', function () {
+        // Khi di chuột ra ngoài, chỉ giữ highlight cho sao đã chọn
+        highlightStars(selectedRating);
+        updateRatingMessage(selectedRating);
+      });
+
+      star.addEventListener('click', function () {
+        selectedRating = parseInt(this.getAttribute('data-value'));
+        highlightStars(selectedRating);
+        updateRatingMessage(selectedRating);
+
+        // Lưu đánh giá - Có thể thêm code để gửi đánh giá lên server
+        console.log(`Đã đánh giá: ${selectedRating} sao`);
+      });
+    });
+
+    function highlightStars(count) {
+      stars.forEach(star => {
+        const value = parseInt(star.getAttribute('data-value'));
+        if (value <= count) {
+          star.classList.add('active');
+        } else {
+          star.classList.remove('active');
+        }
+      });
+    }
+
+    function updateRatingMessage(value) {
+      if (value === 0) {
+        ratingMessage.textContent = 'Hãy chọn từ 1-10 sao để đánh giá!';
+      } else {
+        const messages = [
+          '', // Không dùng index 0
+          'Tệ', 'Không hay', 'Yếu', 'Bình thường',
+          'Tạm được', 'Khá', 'Hay', 'Rất hay',
+          'Tuyệt vời', 'Kiệt tác'
+        ];
+        ratingMessage.textContent = `${value}/10 - ${messages[value]}`;
+      }
+    }
+  });
+</script>
 
 </html>
