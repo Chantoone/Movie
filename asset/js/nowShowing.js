@@ -91,7 +91,7 @@ function initSlider(wrapperId) {
 $(document).ready(function () {
   // Phim Hành Động
   $.ajax({
-    url: "http://localhost:8000/movie/",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     data: { state: "NOW_SHOWING", type_id: 28 }, // Thay 28 bằng type_id của Phim Hành Động
     success: function (response) {
@@ -119,7 +119,7 @@ $(document).ready(function () {
 
   // Phim Hoạt Hình
   $.ajax({
-    url: "http://localhost:8000/movie/",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     data: { state: "NOW_SHOWING", type_id: 16 }, // Thay 29 bằng type_id của Phim Hoạt Hình
     success: function (response) {
@@ -147,7 +147,7 @@ $(document).ready(function () {
 
   // Phim Hài
   $.ajax({
-    url: "http://localhost:8000/movie/",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     data: { state: "NOW_SHOWING", type_id: 35 }, // Thay 30 bằng type_id của Phim Hài
     success: function (response) {
@@ -175,7 +175,7 @@ $(document).ready(function () {
 
   // Phim Gia Đình
   $.ajax({
-    url: "http://localhost:8000/movie/",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     data: { state: "NOW_SHOWING", type_id: 10751 }, // Thay 31 bằng type_id của Phim Gia Đình
     success: function (response) {
@@ -203,7 +203,7 @@ $(document).ready(function () {
 
   // Phim Kinh Dị
   $.ajax({
-    url: "http://localhost:8000/movie/",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     data: { state: "NOW_SHOWING", type_id: 27 }, // Thay 32 bằng type_id của Phim Kinh Dị
     success: function (response) {
@@ -231,7 +231,7 @@ $(document).ready(function () {
 
   // Phim Lãng Mạn
   $.ajax({
-    url: "http://localhost:8000/movie/",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     data: { state: "NOW_SHOWING", type_id: 10749 }, // Thay 33 bằng type_id của Phim Lãng Mạn
     success: function (response) {
@@ -259,7 +259,7 @@ $(document).ready(function () {
 
   // Phim Khoa Học Viễn Tưởng
   $.ajax({
-    url: "http://localhost:8000/movie/",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     data: { state: "NOW_SHOWING", type_id: 878 }, // Thay 34 bằng type_id của Phim Khoa Học Viễn Tưởng
     success: function (response) {

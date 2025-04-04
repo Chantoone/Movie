@@ -39,7 +39,7 @@ $(document).ready(function () {
             return;
 }
         $.ajax({
-            url: "http://localhost:8000/register",
+            url: "http://localhost:8000/user/register",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({

@@ -8,7 +8,7 @@
     const movieId = urlParams.get("id");
     // console.log(movieId)
     $.ajax({
-        url: "http://localhost:8000/movie/"+movieId,
+        url: "http://localhost:8000/film/"+movieId,
         type: "GET",
         data: {id: movieId},
         success: function (response) {

@@ -33,30 +33,30 @@ function initSlider() {
   // Khi DOM đã sẵn sàng
   $(document).ready(function() {
     // Gọi AJAX để lấy danh sách banner
+    // $.ajax({
+    //   url: "http://localhost:8000/movie/banner/", // Backend API
+    //   type: "GET",
+    //   data: { state: "COMING_SOON" },
+    //   success: function(response) {
+    //     var arrowRight = $("#nextBtn");
+    //     // Thêm slide vào DOM
+    //     $.each(response.movies, function(index, movie) {
+    //       var bannerSrc = "../asset/images/" + movie.banner;
+    //       var slide = $('<div class="slide"></div>');
+    //       var img = $('<img>').attr("src", bannerSrc).attr("alt", "Banner " + (index + 1));
+    //       slide.append(img);
+    //       // Chèn trước nút mũi tên phải
+    //       slide.insertBefore(arrowRight);
+    //     });
+    //     // Gọi hàm khởi tạo slider sau khi đã thêm slide
+    //     initSlider();
+    //   },
+    //   error: function(xhr, status, error) {
+    //     console.error("Lỗi khi gọi API: ", error);
+    //   }
+    // });
     $.ajax({
-      url: "http://localhost:8000/movie/banner/", // Backend API
-      type: "GET",
-      data: { state: "COMING_SOON" },
-      success: function(response) {
-        var arrowRight = $("#nextBtn");
-        // Thêm slide vào DOM
-        $.each(response.movies, function(index, movie) {
-          var bannerSrc = "../asset/images/" + movie.banner;
-          var slide = $('<div class="slide"></div>');
-          var img = $('<img>').attr("src", bannerSrc).attr("alt", "Banner " + (index + 1));
-          slide.append(img);
-          // Chèn trước nút mũi tên phải
-          slide.insertBefore(arrowRight);
-        });
-        // Gọi hàm khởi tạo slider sau khi đã thêm slide
-        initSlider();
-      },
-      error: function(xhr, status, error) {
-        console.error("Lỗi khi gọi API: ", error);
-      }
-    });
-    $.ajax({
-        url: "http://localhost:8000/movie/",
+        url: "http://localhost:8000/film/all",
         type: "GET",
         data: { state: "COMING_SOON"},
         success: function (response){

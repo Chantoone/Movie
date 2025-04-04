@@ -2,7 +2,7 @@ let type_room ;
 
 function loadSeats(id_showtime) {
   $.ajax({
-    url: "http://localhost:8000/seat/" + id_showtime,
+    url: "http://localhost:8000/seats/all" + id_showtime,
     method: 'GET',
     success: function (data) {
       const seats = data.seats;
@@ -155,7 +155,7 @@ const seats = $('.seat.selected');
 
 $(document).ready(function () {
     $.ajax({
-        url:"http://localhost:8000/food/",
+        url:"http://localhost:8000/food/all",
         type:"GET",
         success: function (data) {
         $(".food-items").empty(); // Xóa nội dung cũ (nếu có)
@@ -198,7 +198,7 @@ $(document).ready(function () {
 
     // 🟢 Gọi API lấy danh sách rạp
     $.ajax({
-        url: "http://localhost:8000/cinema/get_cinema/" + movieId,
+        url: "http://localhost:8000/seats/ + movieId",
         type: "GET",
         success: function (response) {
             var cinemaList = $(".cinema-buttons");

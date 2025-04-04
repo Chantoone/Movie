@@ -108,25 +108,25 @@ function initSlider(wrapperId) {
 
 
 $(document).ready(function () {
+    // $.ajax({
+    //     url: "http://localhost:8000/movie/banner/",
+    //     type: "GET",
+    //     data:{state:"NOW_SHOWING"},
+    //     success: function (data) {
+    //         var btn=$("#prevBtn");
+    //         var bannerUrl="../asset/images/";
+    //         data.movies.forEach((movie,index) =>{
+    //             var urlimg=bannerUrl+movie.banner;
+    //             var slide= $('<div class="slide"></div>');;
+    //             var img=$("<img>").attr("src",urlimg)
+    //             slide.append(img);
+    //             btn.after(slide);
+    //         })
+    //         initBanner()
+    //     }
+    // })
     $.ajax({
-        url: "http://localhost:8000/movie/banner/",
-        type: "GET",
-        data:{state:"NOW_SHOWING"},
-        success: function (data) {
-            var btn=$("#prevBtn");
-            var bannerUrl="../asset/images/";
-            data.movies.forEach((movie,index) =>{
-                var urlimg=bannerUrl+movie.banner;
-                var slide= $('<div class="slide"></div>');;
-                var img=$("<img>").attr("src",urlimg)
-                slide.append(img);
-                btn.after(slide);
-            })
-            initBanner()
-        }
-    })
-    $.ajax({
-    url: "http://localhost:8000/movie/recent",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     success: function (response) {
       var slider = $("#new");
@@ -151,7 +151,7 @@ $(document).ready(function () {
     }
   });
     $.ajax({
-    url: "http://localhost:8000/movie/",
+    url: "http://localhost:8000/film/all",
     type: "GET",
     data: { state: "NOW_SHOWING" }, // Thay 28 bằng type_id của Phim Hành Động
     success: function (response) {
