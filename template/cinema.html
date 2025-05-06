@@ -111,14 +111,23 @@
 
         <div class="pagination">
             <div class="page-info">
-                Hiển thị 1-9 của 25 phim
+                <span id="page-summary">Hiển thị 1-9 của 25 rạp</span>
+                <div class="page-size-container">
+                    <label for="pageSize">Hiển thị:</label>
+                    <select id="pageSize">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
             </div>
             <div class="page-controls">
-                <button class="page-button" disabled><i class="fas fa-angle-left"></i></button>
-                <button class="page-button active">1</button>
-                <button class="page-button">2</button>
-                <button class="page-button">3</button>
-                <button class="page-button"><i class="fas fa-angle-right"></i></button>
+                <button class="page-button prev-page" disabled><i class="fas fa-angle-left"></i></button>
+                <div id="pagination-numbers" class="pagination-numbers">
+                    <!-- Pagination numbers will be generated here -->
+                </div>
+                <button class="page-button next-page"><i class="fas fa-angle-right"></i></button>
             </div>
         </div>
     </div>
