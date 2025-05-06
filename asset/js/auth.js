@@ -15,6 +15,7 @@ $(document).ready(function () {
                 authMenu.append(l1,l2);
                 $("#logout-btn").on("click",function () {
                     localStorage.removeItem("access_token");
+                    localStorage.removeItem("id_user")
                     window.location.href="../template/home.html"
                 });
                 $("#profile-btn").on("click",function (){
@@ -25,6 +26,7 @@ $(document).ready(function () {
                         window.location.href="../template/admin.html";
                     }
                 })
+                localStorage.setItem("id_user",data.id)
 
             })
             .catch(()=>{

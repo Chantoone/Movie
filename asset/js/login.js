@@ -85,7 +85,7 @@ $(document).ready(function () {
             },
             success: function(response) {
                 localStorage.setItem("access_token", response.access_token); // Lưu token
-
+                localStorage.setItem("id_user", response.id_user);
                 window.location.href = "home.html"; // Chuyển hướng sau khi đăng nhập thành công
             },
             error: function(xhr) {

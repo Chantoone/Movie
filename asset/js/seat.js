@@ -1,5 +1,6 @@
 let type_room ;
-
+let basePrice = 0;
+let cinemaId, date, time, showtimeId,roomId;
 function loadSeats(id_showtime) {
   $.ajax({
     url: "http://localhost:8000/seat/" + id_showtime,
@@ -7,7 +8,7 @@ function loadSeats(id_showtime) {
     success: function (data) {
       const seats = data.seats;
       const seatMap = $('#seatMap');
-
+      roomId=data.id_room;
       // Clear existing seats
       seatMap.empty();
 
@@ -69,7 +70,7 @@ function loadSeats(id_showtime) {
 function calculateTotal() {
   let total = 0;
 
-  let basePrice = 0;
+
   if (type_room === "2D") {
     basePrice = 50000;
   } else {
@@ -135,21 +136,55 @@ const seats = $('.seat.selected');
   // 1. Lấy số tiền từ input hoặc giá trị mặc định
   let amount =parseInt(totalText); // hoặc: parseInt($("#amountInput").val())
 
-  // 2. Gọi API tạo URL thanh toán
-  $.ajax({
-    url: `https://zcinema123.loca.lt/payment/vnpay_create_url?amount=${amount}`,
-    method: "GET",
-    success: function (response) {
-      // 3. Chuyển hướng sang trang thanh toán VNPAY
-      window.location.href = response.payment_url;
-    },
-    error: function () {
-      alert("Có lỗi xảy ra khi tạo yêu cầu thanh toán.");
-    }
-  });
 
-  // 4. Có thể ẩn confirmBox nếu cần
+
   $('#confirmBox').fadeOut();
+  let $toast = $('#paymentToastCenter');
+  $toast.addClass('show');
+  const receiptData = {
+  id_user: localStorage.getItem("id_user"), // hoặc cách bạn lấy user hiện tại
+      method_pay: "VNPAY",
+  tickets: [],
+  foods: []
+    };
+  $('.seat.selected').each(function () {
+
+  receiptData.tickets.push({
+    id_seat: parseInt($(this).attr('id')),
+    id_room: parseInt(roomId), // cần set data-room-id cho mỗi row
+    id_showtime: parseInt(showtimeId),
+    price: $(this).hasClass('vip') ? 70000+ basePrice : 50000 +basePrice // hoặc tính theo room/type_room
+  });
+});
+  $('.food-item').each(function () {
+  let quantity = parseInt($(this).find('.quantity').text());
+  if (quantity > 0) {
+    receiptData.foods.push({
+      id_food: parseInt($(this).data("id")),
+      quantity: quantity
+    });
+  }
+});
+  $.ajax({
+  url: "http://localhost:8000/receipt/", // endpoint đã viết bằng FastAPI
+  method: "POST",
+  contentType: "application/json",
+  data: JSON.stringify(receiptData),
+  success: function (response) {
+
+  },
+  error: function () {
+    alert("Đã xảy ra lỗi khi tạo hóa đơn!");
+  }
+});
+
+  // 4. Tự ẩn sau 3 giây
+  setTimeout(function () {
+    $toast.removeClass('show');
+  }, 2000);
+  setTimeout(function () {
+      window.location.href="home.html"
+  },1000)
 });
 });
 
@@ -194,7 +229,7 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(queryString);
     const movieId = urlParams.get("id");
 
-    let cinemaId, date, time, showtimeId;
+
 
     // 🟢 Gọi API lấy danh sách rạp
     $.ajax({

@@ -5,304 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Rạp Chiếu Phim</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <link rel="stylesheet" href="../asset/css/admin.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-        body {
-            display: flex;
-            min-height: 100vh;
-            background-color: #f8f9fa;
-        }
 
-        /* Sidebar styles */
-        .sidebar {
-            width: 230px;
-            background-color: #212529;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-        .brand {
-            padding: 20px 15px;
-            font-size: 20px;
-            font-weight: bold;
-            border-bottom: 1px solid #373b3e;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand i {
-            cursor: pointer;
-        }
-
-        .sidebar-category {
-            padding: 15px 15px 5px;
-            color: #6c757d;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .sidebar-nav {
-            list-style: none;
-        }
-
-        .sidebar-nav li {
-            margin-bottom: 5px;
-        }
-
-        .sidebar-nav a {
-            color: #adb5bd;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            transition: 0.3s;
-        }
-
-        .sidebar-nav a:hover, .sidebar-nav a.active {
-            color: #fff;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .sidebar-nav i {
-            margin-right: 10px;
-            width: 20px;
-        }
-
-        .user-info {
-            margin-top: auto;
-            padding: 15px;
-            border-top: 1px solid #373b3e;
-            font-size: 14px;
-        }
-
-        /* Main content styles */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .search-container {
-            display: flex;
-            flex: 1;
-            max-width: 500px;
-        }
-
-        .search-container input {
-            flex: 1;
-            padding: 8px 15px;
-            border: 1px solid #ced4da;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-        }
-
-        .search-container button {
-            background-color: #0d6efd;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            padding: 8px 15px;
-            cursor: pointer;
-        }
-
-        .home-button {
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 8px 15px;
-            cursor: pointer;
-            margin-left: 15px;
-        }
-
-        /* Dashboard content styles */
-        .dashboard-content {
-            padding: 20px;
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .page-title {
-            margin-bottom: 20px;
-        }
-
-        .page-title h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-
-        .page-title p {
-            color: #6c757d;
-        }
-
-        .cards-container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            flex: 1;
-            min-width: 250px;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-primary {
-            border-top: 4px solid #0d6efd;
-        }
-
-        .card-warning {
-            border-top: 4px solid #ffc107;
-        }
-
-        .card-success {
-            border-top: 4px solid #198754;
-        }
-
-        .card-danger {
-            border-top: 4px solid #dc3545;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .card-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-decoration: none;
-            color: #0d6efd;
-            font-size: 14px;
-        }
-
-        .charts-container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .chart-card {
-            flex: 1;
-            min-width: 45%;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .chart-title {
-            padding: 15px 20px;
-            font-size: 16px;
-            font-weight: 600;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .chart-body {
-            padding: 20px;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .table-container {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .table-header {
-            padding: 15px 20px;
-            font-size: 16px;
-            font-weight: 600;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .table-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .table-controls select {
-            padding: 5px 10px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            outline: none;
-        }
-
-        .table-controls input {
-            padding: 5px 10px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            outline: none;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 60px;
-                overflow: hidden;
-            }
-
-            .sidebar .sidebar-category,
-            .sidebar .sidebar-nav span,
-            .sidebar .user-info span {
-                display: none;
-            }
-
-            .sidebar-nav i {
-                margin-right: 0;
-            }
-
-            .sidebar-nav a {
-                justify-content: center;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .brand span {
-                display: none;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Sidebar -->
@@ -314,243 +23,305 @@
 
         <div class="sidebar-category">QUẢN LÝ</div>
         <ul class="sidebar-nav">
+
             <li>
-                <a href="#" class="active">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Tổng Quan</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
+                <a href="customer.html">
                     <i class="fas fa-users"></i>
                     <span>Khách Hàng</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li >
+                <a href="admin.html" class="active">
                     <i class="fas fa-film"></i>
                     <span>Phim</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="showtime.html">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Xuất Chiếu</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="cinema.html">
                     <i class="fas fa-theater-masks"></i>
                     <span>Rạp</span>
                 </a>
             </li>
-        </ul>
-
-        <div class="sidebar-category">BÁO CÁO</div>
-        <ul class="sidebar-nav">
             <li>
-                <a href="#">
+                <a href="report.html">
                     <i class="fas fa-chart-bar"></i>
                     <span>Thống Kê</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span>Doanh Thu</span>
-                </a>
-            </li>
         </ul>
 
-        <div class="user-info">
-            <i class="fas fa-user-circle"></i>
-            <span>Đăng nhập: Admin</span>
-        </div>
-    </div>
 
+    </div>
     <!-- Main Content -->
-    <div class="main-content">
-        <div class="topbar">
+   <div class="container">
+       <button class="home-button">
+                <i class="fas fa-home"></i> Trang Chính
+            </button>
+
+        <div class="header">
+            <h1>Danh sách phim</h1>
+
             <div class="search-container">
-                <input type="text" placeholder="Tìm kiếm...">
+                <input type="text" placeholder="Tìm kiếm phim...">
                 <button type="button">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
-            <button class="home-button">
-                <i class="fas fa-home"></i> Trang Chính
+            <button class="add-button">
+                <i class="fas fa-plus"></i> Thêm phim mới
             </button>
+
+        </div>
+        <div class="filter-container">
+            <label for="statusFilter">Lọc theo trạng thái:</label>
+            <select id="statusFilter">
+                <option value="">Tất cả</option>
+                <option value="NOW_SHOWING">Đang chiếu</option>
+                <option value="COMING_SOON">Sắp chiếu</option>
+                <option value="ENDED">Đã kết thúc</option>
+            </select>
         </div>
 
-        <div class="dashboard-content">
-            <div class="page-title">
-                <h1>Tổng Quan</h1>
-                <p>Tổng quan quản lý rạp chiếu phim</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên phim</th>
+                    <th>Thời lượng</th>
+                    <th>Ngày khởi chiếu</th>
+                    <th>Trạng thái</th>
+                    <th> Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+<!--                <tr>-->
+<!--                    <td>1</td>-->
+<!--                    <td>Avengers: Endgame</td>-->
+<!--                    <td>180 phút</td>-->
+<!--                    <td>25/03/2025</td>-->
+<!--                    <td><span class="status status-active">Đang chiếu</span></td>-->
+<!--                    <td>-->
+<!--                        <div class="action-buttons">-->
+<!--                            <button class="action-button view-button" title="Xem"><i class="fas fa-eye"></i></button>-->
+<!--                             <button class="action-button edit-button" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>-->
+<!--                            <button class="action-button delete-button" title="Xóa"><i class="fas fa-trash-alt"></i></button>-->
+<!--                        </div>-->
+<!--                    </td>-->
+<!--                </tr>-->
+
+
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <div class="page-info">
+                Hiển thị 1-9 của 25 phim
             </div>
-
-            <div class="cards-container">
-<!--                <div class="card card-primary">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title">Tổng Khách Hàng</h5>-->
-<!--                        <a href="#" class="card-link">-->
-<!--                            Xem Chi Tiết-->
-<!--                            <i class="fas fa-angle-right"></i>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-                <div class="card card-warning">
-                    <div class="card-body">
-                        <h5 class="card-title">Phim Đang Chiếu</h5>
-                        <a href="#" class="card-link">
-                            Xem Chi Tiết
-                            <i class="fas fa-angle-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-<!--                <div class="card card-success">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title">Suất Chiếu Hôm Nay</h5>-->
-<!--                        <a href="#" class="card-link">-->
-<!--                            Xem Chi Tiết-->
-<!--                            <i class="fas fa-angle-right"></i>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-                <div class="card card-danger">
-                    <div class="card-body">
-                        <h5 class="card-title">Tổng Rạp</h5>
-                        <a href="#" class="card-link">
-                            Xem Chi Tiết
-                            <i class="fas fa-angle-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="charts-container">
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-chart-area"></i> Doanh Thu Theo Ngày
-                    </div>
-                    <div class="chart-body">
-                        <!-- This is where the chart would be rendered -->
-                        <img src="/api/placeholder/400/320" alt="Biểu đồ doanh thu theo ngày">
-                    </div>
-                </div>
-
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-chart-bar"></i> Doanh Thu Theo Tháng
-                    </div>
-                    <div class="chart-body">
-                        <!-- This is where the chart would be rendered -->
-                        <img src="/api/placeholder/400/320" alt="Biểu đồ doanh thu theo tháng">
-                    </div>
-                </div>
-            </div>
-
-            <div class="table-container">
-                <div class="table-header">
-                    <i class="fas fa-table"></i> Danh Sách Phim Hot
-                </div>
-
-                <div class="table-controls">
-                    <div>
-                        <select>
-                            <option>10</option>
-                            <option>25</option>
-                            <option>50</option>
-                        </select>
-                        <span> mục mỗi trang</span>
-                    </div>
-
-                    <div>
-                        <input type="text" placeholder="Tìm kiếm...">
-                    </div>
-                </div>
-
-                <div id="data-table">
-                    <!-- Table content would be loaded here -->
-                    <div style="padding: 20px; text-align: center;">
-                        <p>Đang tải dữ liệu...</p>
-                    </div>
-                </div>
+            <div class="page-controls">
+                <button class="page-button" disabled><i class="fas fa-angle-left"></i></button>
+                <button class="page-button active">1</button>
+                <button class="page-button">2</button>
+                <button class="page-button">3</button>
+                <button class="page-button"><i class="fas fa-angle-right"></i></button>
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script>
+<div id="movieModal" class="modal">
+        <div class="modal-content" id="model-content">
+            <div class="modal-header">
+                <h2>Chi Tiết Phim</h2>
+
+            </div>
+            <div class="modal-body">
+                <div class="movie-poster">
+                    <img id="poster">
+                </div>
+                <div class="movie-info">
+                    <h1 id="title" class="movie-title"></h1>
+                    <div class="movie-meta">
+                        <div>
+                            <span class="meta-label">Thời lượng:</span>
+                            <span id="duration" class="meta-value"></span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Thể loại:</span>
+                            <span id="genre" class="meta-value"></span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Đạo diễn:</span>
+                            <span id="director" class="meta-value"></span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Diễn viên:</span>
+                            <span id="cast" class="meta-value"></span>
+                        </div>
+<!--                        <div>-->
+<!--                            <span class="meta-label">Ngày khởi chiếu:</span>-->
+<!--                            <span id="releaseDate" class="meta-value"></span>-->
+<!--                        </div>-->
+                        <div>
+                            <span class="meta-label">Trạng thái:</span>
+                            <span id="status" class="meta-value"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="movie-synopsis">
+                    <h3 class="synopsis-heading">Nội Dung</h3>
+                    <p id="synopsis" class="synopsis-text">
+
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="close">Đóng</button>
+            </div>
+        </div>
+    </div>
+<div id="editMovieModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Chỉnh sửa phim</h2>
+        </div>
+        <form id="editMovieForm" class="modal-body">
+            <label for="editName">Tên phim:</label>
+            <input type="text" id="editName" name="name" required>
+
+            <label for="editTime">Thời lượng (phút):</label>
+            <input type="number" id="editTime" name="time" min="1" required>
+
+            <label for="editDirector">Đạo diễn:</label>
+            <input type="text" id="editDirector" name="director">
+
+            <label for="editActor">Diễn viên:</label>
+            <input type="text" id="editActor" name="actor">
+
+            <label for="editOverview">Nội dung:</label>
+            <textarea id="editOverview" name="overview" rows="4"></textarea>
+
+            <label for="editState">Trạng thái:</label>
+            <select id="editState" name="state">
+                <option value="NOW_SHOWING">Đang chiếu</option>
+                <option value="COMING_SOON">Sắp chiếu</option>
+                <option value="ENDED">Đã kết thúc</option>
+            </select>
+
+            <label for="editGenres">Thể loại phim:</label>
+            <select id="editGenres" name="genres" multiple>
+                <option value="28">Hành động</option>
+                <option value="10749">Lãng Mạn</option>
+                <option value="35">Hài</option>
+                <option value="27">Kinh dị</option>
+                <option value="878">Khoa học viễn tưởng</option>
+                <option value="16">Hoạt hình</option>
+                <!-- thêm nếu cần -->
+            </select>
+        </form>
+        <div class="modal-footer">
+            <button type="submit" form="editMovieForm">Lưu thay đổi</button>
+            <button type="button" id="cancelEdit">Hủy</button>
+        </div>
+    </div>
+</div>
+    <!-- Modal thêm phim mới -->
+<div id="addMovieModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Thêm Phim Mới</h2>
+        </div>
+        <form id="addMovieForm" class="modal-body" enctype="multipart/form-data">
+            <label for="newName">Tên phim:</label>
+            <input type="text" id="newName" name="name" required>
+
+            <label for="newTime">Thời lượng (phút):</label>
+            <input type="number" id="newTime" name="time" min="1" required>
+
+            <label for="newDirector">Đạo diễn:</label>
+            <input type="text" id="newDirector" name="director">
+
+            <label for="newActor">Diễn viên:</label>
+            <input type="text" id="newActor" name="actor">
+
+            <label for="newOverview">Nội dung:</label>
+            <textarea id="newOverview" name="overview" rows="4"></textarea>
+
+            <label for="newState">Trạng thái:</label>
+            <select id="newState" name="state">
+                <option value="COMING_SOON">Sắp chiếu</option>
+                <option value="NOW_SHOWING">Đang chiếu</option>
+                <option value="ENDED">Đã kết thúc</option>
+            </select>
+
+            <label for="newTypes">Thể loại phim:</label>
+            <select id="newTypes" name="id_type" multiple>
+                <option value="28">Hành động</option>
+                <option value="10749">Lãng Mạn</option>
+                <option value="35">Hài</option>
+                <option value="27">Kinh dị</option>
+                <option value="878">Khoa học viễn tưởng</option>
+                <option value="16">Hoạt hình</option>
+            </select>
+
+            <label for="newTimeRelease">Ngày khởi chiếu:</label>
+            <input type="datetime-local" id="newTimeRelease" name="time_release" required>
+
+            <label for="newPoster">Ảnh poster:</label>
+            <input type="file" id="newPoster" name="poster" accept="image/*">
+
+            <label for="newBanner">Ảnh banner:</label>
+            <input type="file" id="newBanner" name="banner" accept="image/*">
+        </form>
+
+        <div class="modal-footer">
+            <button type="submit" form="addMovieForm">Thêm phim</button>
+            <button type="button" id="cancelAdd">Hủy</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#editGenres').select2({
+            placeholder: "Chọn thể loại phim",
+            width: '100%',
+            allowClear: true
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+
+<script>
         $(document).ready(function() {
-            // Toggle sidebar
-            $('.brand i').click(function() {
-                $('body').toggleClass('sidebar-collapsed');
-                $('.sidebar').toggleClass('collapsed');
+            // Search functionality
+            $('.search-container button').click(function() {
+                const searchTerm = $('.search-container input').val().toLowerCase();
+                $('tbody tr').each(function() {
+                    const title = $(this).find('td:nth-child(3)').text().toLowerCase();
+                    const genre = $(this).find('td:nth-child(4)').text().toLowerCase();
+                    if (title.includes(searchTerm) || genre.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
             });
 
-            // Navigation active state
-            $('.sidebar-nav a').click(function() {
-                $('.sidebar-nav a').removeClass('active');
+
+            // Pagination functionality
+            $('.page-controls .page-button').not(':first, :last').click(function() {
+                $('.page-controls .page-button').removeClass('active');
                 $(this).addClass('active');
             });
-
-            // Home button functionality
-            $('.home-button').click(function() {
-                window.location.href="./home.html"
-            });
-
-            // Simulate loading data for the table (would be replaced with actual AJAX)
-            setTimeout(function() {
-                var tableHTML = `
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background-color: #f8f9fa;">
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Tên Phim</th>
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Thể Loại</th>
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Thời Lượng</th>
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Ngày Khởi Chiếu</th>
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Trạng Thái</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Avengers: Endgame</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hành Động, Viễn Tưởng</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">180 phút</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">25/03/2025</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #198754; color: white; padding: 3px 8px; border-radius: 4px;">Đang chiếu</span></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Spider-Man: Across the Spider-Verse</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hoạt Hình, Phiêu Lưu</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">140 phút</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">01/04/2025</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #ffc107; color: black; padding: 3px 8px; border-radius: 4px;">Sắp chiếu</span></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">The Batman</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hành Động, Tội Phạm</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">176 phút</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">15/03/2025</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #198754; color: white; padding: 3px 8px; border-radius: 4px;">Đang chiếu</span></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Mắt Biếc</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Tình Cảm, Lãng Mạn</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">117 phút</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">10/03/2025</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #dc3545; color: white; padding: 3px 8px; border-radius: 4px;">Kết thúc</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                `;
-
-                $('#data-table').html(tableHTML);
-            }, 1000);
         });
     </script>
-</body>
+<script src="../asset/js/movie.js"></script>
 </html>

@@ -284,3 +284,27 @@
       background-color: #4a7a2e;
     }
 
+.toast-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #5c9836;
+  color: white;
+  padding: 30px 50px;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 9999;
+  text-align: center;
+}
+
+.toast-center.show {
+  visibility: visible;
+  opacity: 1;
+}
+
