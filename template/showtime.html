@@ -136,12 +136,14 @@
 
                 <label for="cinemaName">Rạp:</label>
             <select id="cinemaName" name="cinema">
-                <option value="NOW_SHOWING">Đang chiếu</option>
+<!--                <option value="NOW_SHOWING">Đang chiếu</option>-->
 
             </select>
-
                 <label for="roomName">Phòng:</label>
-                <input type="text" id="roomName" name="roomName" required>
+                <select id="roomName" name="room">
+                <!--                <option value="NOW_SHOWING">Đang chiếu</option>-->
+
+                </select>
             </form>
             <div class="modal-footer">
                 <button type="submit" form="addShowtimeForm">Thêm mới</button>
@@ -158,16 +160,21 @@
             </div>
             <form id="editShowtimeForm" class="modal-body">
                 <label for="editMovieName">Tên phim:</label>
-                <input type="text" id="editMovieName" name="movieName" required>
+                <select id="editMovieName" name="movie">
+
+
+                 </select>
 
                 <label for="editStartTime">Thời gian bắt đầu:</label>
                 <input type="datetime-local" id="editStartTime" name="startTime" required>
 
                 <label for="editCinemaName">Rạp:</label>
-                <input type="text" id="editCinemaName" name="cinemaName" required>
+                <select id="editCinemaName" name="cinemaName" required>
+                </select>
 
                 <label for="editRoomName">Phòng:</label>
-                <input type="text" id="editRoomName" name="roomName" required>
+                <select id="editRoomName" name="roomName" required>
+                </select>
             </form>
             <div class="modal-footer">
                 <button type="submit" form="editShowtimeForm">Lưu thay đổi</button>
