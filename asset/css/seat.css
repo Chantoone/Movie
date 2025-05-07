@@ -247,41 +247,62 @@
         font-size: xxx-large;
     }
     .confirm-box {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.confirm-content {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-    width: 800px;
-  max-height: 100vh;
-  overflow-y: auto;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
+    .confirm-content {
+      position: relative;
+      background: white;
+      padding: 50px;
+      border-radius: 15px;
+      width: 1000px;
+      max-height: 100vh;
+      overflow-y: auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
 
-#confirmPaymentBtn {
-  margin-top: 20px;
-    padding: 10px 20px;
+    .confirm-content .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 3rem; /* Increased size */
+      color: #333;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .confirm-content .close:hover {
+      color: #5c9836;
+    }
+
+    #confirmPaymentBtn {
+      margin-top: 30px;
+      padding: 15px 30px;
       background-color: #5c9836;
       color: #fff;
       border: none;
-      border-radius: 3px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.5rem;
       transition: background-color 0.3s;
-}
-#confirmPaymentBtn:hover {
+    }
+
+    #confirmPaymentBtn:hover {
       background-color: #4a7a2e;
+    }
+
+    .confirm-content h2, .confirm-content p {
+      font-size: 1.5rem;
+      line-height: 2;
     }
 
 .toast-center {

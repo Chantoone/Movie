@@ -15,7 +15,6 @@
       <div class="logo"><a href="home.html">ZCINEMA</a></div>
       <div class="nav-left">
         <ul>
-<!--          <li><a href="#">Thể Loại</a></li>-->
           <li><a href="nowShowing.html">Phim đang chiếu</a></li>
           <li><a href="commingSoon.html">Phim sắp ra mắt</a></li>
           <li><a href="event.html">Sự kiện / khuyến mãi</a></li>
@@ -40,43 +39,82 @@
     <div class="movie-info-container">
       <!-- Phần poster -->
       <div class="movie-poster">
-<!--        <img src="../asset/image/post (69).jpg" alt="Poster của phim">-->
       </div>
       <!-- Phần thông tin phim -->
       <div class="movie-info-text">
-<!--        <h1 class="movie-title">KUNG FU PANDA 4</h1>-->
-        
         <div class="movie-info">
-<!--          <p><strong>Nội dung:</strong> Sau khi Po được chọn trở thành Thủ lĩnh tinh thần của Thung lũng Bình Yên, Po cần tìm và huấn luyện một Chiến binh Rồng mới, trong khi đó một mụ phù thủy độc ác lên kế hoạch triệu hồi lại tất cả những kẻ phản diện mà Po đã đánh bại về cõi linh hồn.</p>-->
-<!--          <p><strong>Diễn viên:</strong> (Đang cập nhật)</p>-->
-<!--          <p><strong>Đạo diễn:</strong> (Đang cập nhật)</p>-->
-<!--          <p><strong>Thể loại:</strong> Phim hoạt hình</p>-->
-<!--          <p><strong>Ngôn ngữ:</strong> Phụ đề tiếng Việt</p>-->
-<!--          <p><strong>Thời lượng:</strong> 94 phút</p>-->
         </div>
         <div class="movie-actions">
-<!--            <button class="choose-seat">Chọn ghế</button>-->
-<!--          <button class="trailer">Trailer</button>-->
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Phần bình luận -->
-  <div class="comment-section">
-    <h2>Hãy để lại bình luận:</h2>
-    <form class="comment-form">
-      <textarea placeholder="Viết bình luận của bạn..." required></textarea>
-      <button type="submit">Gửi</button>
-    </form>
-
-    <div class="comments" id="commentsContainer">
-      <!-- Các bình luận sẽ được load động -->
+  <!-- Phần đánh giá phim -->
+  <div class="rating-section-container">
+    <h2>Đánh giá phim</h2>
+    <div class="movie-rating-summary">
+      <div class="average-score">
+        <div class="score-display">0.0</div>
+        <div class="star-display-large"></div>
+        <div class="total-ratings">0 đánh giá</div>
+      </div>
+      <div class="rating-distribution">
+        <div class="rating-bar">
+          <span class="star-label">5 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+        <div class="rating-bar">
+          <span class="star-label">4 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+        <div class="rating-bar">
+          <span class="star-label">3 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+        <div class="rating-bar">
+          <span class="star-label">2 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+        <div class="rating-bar">
+          <span class="star-label">1 <span class="star-icon">★</span></span>
+          <div class="progress-bar"><div class="progress" style="width: 0%"></div></div>
+          <span class="percentage">0%</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="user-rating-container">
+      <h3>Đánh giá của bạn</h3>
+      <div class="user-rating">
+        <div class="star-rating">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+        <form class="rating-form">
+          <textarea placeholder="Chia sẻ ý kiến của bạn về bộ phim này (tùy chọn)..." rows="3"></textarea>
+          <button type="submit" class="submit-rating">Gửi đánh giá</button>
+        </form>
+      </div>
     </div>
 
-    <a href="#" class="load-more" id="loadMoreBtn">TẢI THÊM BÌNH LUẬN</a>
+    <div class="recent-ratings">
+      <h3>Đánh giá gần đây</h3>
+      <div id="reviewsContainer">
+        <!-- Các đánh giá sẽ được load động -->
+      </div>
+      <button id="loadMoreBtn" class="load-more">XEM THÊM ĐÁNH GIÁ</button>
+    </div>
   </div>
-    <footer>
+
+  <footer>
     <div class="footer-content">
       <div class="footer-section">
         <h3>Quy định và chính sách chung</h3>

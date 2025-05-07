@@ -1,6 +1,7 @@
 let type_room ;
 let basePrice = 0;
 let cinemaId, date, time, showtimeId,roomId;
+let totalbill =0;
 function loadSeats(id_showtime) {
   $.ajax({
     url: "http://localhost:8000/seat/" + id_showtime,
@@ -91,7 +92,7 @@ function calculateTotal() {
     let price = parseInt($(this).attr('data-price'));
     total += quantity * price;
   });
-
+    totalbill=total;
 
   $('.total-price').text(`THANH TOÁN: ${total.toLocaleString('vi-VN')} VND`);
 }
@@ -130,62 +131,85 @@ const seats = $('.seat.selected');
   $('#confirmFoods').html(`<p><strong>Đồ ăn đã chọn:</strong><br>${foods.join("<br>") || 'Không có'}</p>`);
   $('#confirmTotal').text(totalText);
 
+    let amount = totalbill;
+  console.log(amount);
 
+  let qrurl = `https://img.vietqr.io/image/TPB-00375802795-compact2.png?amount=${amount}&addInfo=thanh%20toan%20&accountName=ZCINEMA`;
+  qr=$("#qr");
+  qr.attr("src",qrurl)
   $('#confirmBox').fadeIn();
-  $(document).on("click", "#confirmPaymentBtn", function () {
-  // 1. Lấy số tiền từ input hoặc giá trị mặc định
-  let amount =parseInt(totalText); // hoặc: parseInt($("#amountInput").val())
+  let checkInterval = setInterval(function () {
+      const today = new Date();
+      const formattedDate = today.toISOString().split('T')[0];
 
+      $.ajax({
+            url: "http://localhost:8000/receipt/check-transaction/",
+            method: "GET",
+            data:{
+                "transaction_date_min":formattedDate,
+                "amount_in":totalbill
+            },
+            success: function (response) {
+              if (response.messages?.success && response.transactions?.length > 0) {
+                  let $toast = $('#paymentToastCenter');
+                  $toast.addClass('show');
+                  $('#confirmBox').fadeOut();
+                  const receiptData = {
+                  id_user: localStorage.getItem("id_user"), // hoặc cách bạn lấy user hiện tại
+                      method_pay: "VNPAY",
+                  tickets: [],
+                  foods: []
+                    };
+                  $('.seat.selected').each(function () {
 
+                  receiptData.tickets.push({
+                    id_seat: parseInt($(this).attr('id')),
+                    id_room: parseInt(roomId), // cần set data-room-id cho mỗi row
+                    id_showtime: parseInt(showtimeId),
+                    price: $(this).hasClass('vip') ? 70000+ basePrice : 50000 +basePrice // hoặc tính theo room/type_room
+                  });
+                });
+                  $('.food-item').each(function () {
+                  let quantity = parseInt($(this).find('.quantity').text());
+                  if (quantity > 0) {
+                    receiptData.foods.push({
+                      id_food: parseInt($(this).data("id")),
+                      quantity: quantity
+                    });
+                  }
+                });
+                  $.ajax({
+                  url: "http://localhost:8000/receipt/", // endpoint đã viết bằng FastAPI
+                  method: "POST",
+                  contentType: "application/json",
+                  data: JSON.stringify(receiptData),
+                  success: function (response) {
 
-  $('#confirmBox').fadeOut();
-  let $toast = $('#paymentToastCenter');
-  $toast.addClass('show');
-  const receiptData = {
-  id_user: localStorage.getItem("id_user"), // hoặc cách bạn lấy user hiện tại
-      method_pay: "VNPAY",
-  tickets: [],
-  foods: []
-    };
-  $('.seat.selected').each(function () {
+                  },
+                  error: function () {
+                    alert("Đã xảy ra lỗi khi tạo hóa đơn!");
+                  }
+                });
 
-  receiptData.tickets.push({
-    id_seat: parseInt($(this).attr('id')),
-    id_room: parseInt(roomId), // cần set data-room-id cho mỗi row
-    id_showtime: parseInt(showtimeId),
-    price: $(this).hasClass('vip') ? 70000+ basePrice : 50000 +basePrice // hoặc tính theo room/type_room
-  });
-});
-  $('.food-item').each(function () {
-  let quantity = parseInt($(this).find('.quantity').text());
-  if (quantity > 0) {
-    receiptData.foods.push({
-      id_food: parseInt($(this).data("id")),
-      quantity: quantity
-    });
-  }
-});
-  $.ajax({
-  url: "http://localhost:8000/receipt/", // endpoint đã viết bằng FastAPI
-  method: "POST",
-  contentType: "application/json",
-  data: JSON.stringify(receiptData),
-  success: function (response) {
+                  // 4. Tự ẩn sau 3 giây
+                  setTimeout(function () {
+                    $toast.removeClass('show');
+                  }, 2000);
+                  setTimeout(function () {
+                      window.location.href="home.html"
+                  },1000)
+                  clearInterval(checkInterval);
+                } else {
+                  console.log("⏳ Chưa thấy giao dịch hợp lệ, tiếp tục kiểm tra...");
+                }
+            },
+            error: function (xhr) {
+              console.error("Lỗi khi gọi API:", xhr.responseText);
 
-  },
-  error: function () {
-    alert("Đã xảy ra lỗi khi tạo hóa đơn!");
-  }
-});
+            }
+      });
+  },5000)
 
-  // 4. Tự ẩn sau 3 giây
-  setTimeout(function () {
-    $toast.removeClass('show');
-  }, 2000);
-  setTimeout(function () {
-      window.location.href="home.html"
-  },1000)
-});
 });
 
 $(document).ready(function () {
