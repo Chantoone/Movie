@@ -1,11 +1,11 @@
 import {checkToken} from "./checkToken.js";
-
+let movieId
 $(document).ready(function (){
     const queryString = window.location.search;
     // Tạo đối tượng URLSearchParams từ chuỗi query
     const urlParams = new URLSearchParams(queryString);
     // Lấy giá trị của tham số "id"
-    const movieId = urlParams.get("id");
+    movieId = urlParams.get("id");
     let currentPage = 1;
     const pageSize = 5;
     let totalPages = 0;
@@ -176,14 +176,13 @@ $(document).ready(function (){
         $.ajax({
             url: "http://localhost:8000/review/",
             type: "POST",
-            headers: {
-                "Authorization": "Bearer " + token
-            },
+
             contentType: "application/json",
             data: JSON.stringify({
-                score: rating,
-                description: description,
-                id_movie: movieId
+                "score": rating,
+                "description": description,
+                "id_movie": parseInt(movieId),
+                "id_user": parseInt(localStorage.getItem("id_user"))
             }),
             success: function(response) {
                 // Xóa nội dung form và reset đánh giá
@@ -192,8 +191,8 @@ $(document).ready(function (){
                 window.currentRating = 0;
                 
                 // Tải lại thống kê đánh giá và danh sách đánh giá
-                loadRatingSummary(movieId);
-                loadReviews(movieId, 1);
+                loadRatingSummary(parseInt(movieId));
+                loadReviews(parseInt(movieId), 1);
                 
                 alert("Cảm ơn bạn đã đánh giá phim!");
             },

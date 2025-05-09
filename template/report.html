@@ -6,6 +6,7 @@
     <title>Quản Lý Rạp Chiếu Phim</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../asset/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
@@ -32,7 +33,7 @@
                 </a>
             </li>
             <li>
-                <a href="showtime.html" class="active">
+                <a href="showtime.html">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Xuất Chiếu</span>
                 </a>
@@ -44,7 +45,7 @@
                 </a>
             </li>
             <li>
-                <a href="report.html">
+                <a href="report.html "  class="active">
                     <i class="fas fa-chart-bar"></i>
                     <span>Thống Kê</span>
                 </a>
@@ -57,90 +58,18 @@
    <div class="container">
        <button class="home-button">
                 <i class="fas fa-home"></i> Trang Chính
-            </button>
+       </button>
 
-        <div class="header">
-            <h1>Danh sách suất chiếu</h1>
 
-            <div class="search-container">
-                <input type="text" placeholder="Tìm kiếm phim...">
-                <button type="button">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-            <button class="add-button">
-                <i class="fas fa-plus"></i> Thêm suất chiếu mới
-            </button>
-
+       <h2 style="margin-top: 40px;">Doanh thu theo rạp (tháng/năm)</h2>
+       <div style="margin-top: 20px;">
+        <button id="view-monthly" class="toggle-btn">Xem theo tháng</button>
+        <button id="view-yearly" class="toggle-btn">Xem theo năm</button>
         </div>
+       <canvas id="cinemaRevenueChart" width="800" height="400"></canvas>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên phim</th>
-                    <th>Thời gian bắt đầu</th>
-                    <th>Rạp</th>
-                    <th>Phòng</th>
-                    <th> Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Avengers: Endgame</td>
-                    <td>25/03/2025 8:00</td>
-                    <td>ZCINEMA HÀ ĐÔNG</td>
-                    <td>PHÒNG 01</td>
-                    <td>
-                        <div class="action-buttons">
-                             <button class="action-button edit-button" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
-                            <button class="action-button delete-button" title="Xóa"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                 <tr>
-                    <td>1</td>
-                    <td>Avengers: Endgame</td>
-                    <td>25/03/2025 8:00</td>
-                    <td>ZCINEMA HÀ ĐÔNG</td>
-                    <td>PHÒNG 01</td>
-                    <td>
-                        <div class="action-buttons">
-                             <button class="action-button edit-button" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
-                            <button class="action-button delete-button" title="Xóa"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Avengers: Endgame</td>
-                    <td>25/03/2025 8:00</td>
-                    <td>ZCINEMA HÀ ĐÔNG</td>
-                    <td>PHÒNG 01</td>
-                    <td>
-                        <div class="action-buttons">
-                             <button class="action-button edit-button" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
-                            <button class="action-button delete-button" title="Xóa"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </td>
-                </tr>
 
-            </tbody>
-        </table>
 
-        <div class="pagination">
-            <div class="page-info">
-                Hiển thị 1-9 của 25 phim
-            </div>
-            <div class="page-controls">
-                <button class="page-button" disabled><i class="fas fa-angle-left"></i></button>
-                <button class="page-button active">1</button>
-                <button class="page-button">2</button>
-                <button class="page-button">3</button>
-                <button class="page-button"><i class="fas fa-angle-right"></i></button>
-            </div>
-        </div>
     </div>
 
 
@@ -148,67 +77,19 @@
     <script>
         $(document).ready(function() {
             // Toggle sidebar
-            $('.brand i').click(function() {
+            $('.brand i').click(function () {
                 $('body').toggleClass('sidebar-collapsed');
                 $('.sidebar').toggleClass('collapsed');
             });
 
 
-
             // Home button functionality
-            $('.home-button').click(function() {
-                window.location.href="./home.html"
+            $('.home-button').click(function () {
+                window.location.href = "./home.html"
             });
 
             // Simulate loading data for the table (would be replaced with actual AJAX)
-            setTimeout(function() {
-                var tableHTML = `
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background-color: #f8f9fa;">
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Tên Phim</th>
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Thể Loại</th>
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Thời Lượng</th>
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Ngày Khởi Chiếu</th>
-                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #dee2e6;">Trạng Thái</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Avengers: Endgame</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hành Động, Viễn Tưởng</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">180 phút</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">25/03/2025</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #198754; color: white; padding: 3px 8px; border-radius: 4px;">Đang chiếu</span></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Spider-Man: Across the Spider-Verse</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hoạt Hình, Phiêu Lưu</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">140 phút</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">01/04/2025</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #ffc107; color: black; padding: 3px 8px; border-radius: 4px;">Sắp chiếu</span></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">The Batman</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Hành Động, Tội Phạm</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">176 phút</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">15/03/2025</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #198754; color: white; padding: 3px 8px; border-radius: 4px;">Đang chiếu</span></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Mắt Biếc</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">Tình Cảm, Lãng Mạn</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">117 phút</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">10/03/2025</td>
-                            <td style="padding: 12px; border-bottom: 1px solid #dee2e6;"><span style="background-color: #dc3545; color: white; padding: 3px 8px; border-radius: 4px;">Kết thúc</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                `;
-
-                $('#data-table').html(tableHTML);
-            }, 1000);
-        });
+        })
     </script>
 <script>
         $(document).ready(function() {
@@ -226,28 +107,7 @@
                 });
             });
 
-            // Add new movie button functionality
-            $('.add-button').click(function() {
-                alert('Mở form thêm phim mới');
-            });
 
-            // Action buttons functionality
-            $('.view-button').click(function() {
-                const movieName = $(this).closest('tr').find('td:nth-child(3)').text();
-                alert('Xem chi tiết phim: ' + movieName);
-            });
-
-            $('.edit-button').click(function() {
-                const movieName = $(this).closest('tr').find('td:nth-child(3)').text();
-                alert('Chỉnh sửa phim: ' + movieName);
-            });
-
-            $('.delete-button').click(function() {
-                const movieName = $(this).closest('tr').find('td:nth-child(3)').text();
-                if (confirm('Bạn có chắc chắn muốn xóa phim: ' + movieName + '?')) {
-                    alert('Đã xóa phim: ' + movieName);
-                }
-            });
 
             // Pagination functionality
             $('.page-controls .page-button').not(':first, :last').click(function() {
@@ -256,5 +116,6 @@
             });
         });
     </script>
+<script src="../asset/js/report.js"></script>
 </body>
 </html>

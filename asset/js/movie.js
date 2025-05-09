@@ -233,7 +233,9 @@ $(document).ready(function () {
     $("#close").on("click", function () {
         $("#movieModal").fadeOut();
     });
-
+    $("#cancelEdit").on("click", function () {
+        $("#editMovieModal").fadeOut();
+    });
     // Gửi form cập nhật phim
     $('#editMovieForm').on('submit', function (e) {
         e.preventDefault();

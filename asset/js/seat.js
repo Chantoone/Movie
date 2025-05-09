@@ -134,7 +134,7 @@ const seats = $('.seat.selected');
     let amount = totalbill;
   console.log(amount);
 
-  let qrurl = `https://img.vietqr.io/image/TPB-00375802795-compact2.png?amount=${amount}&addInfo=thanh%20toan%20&accountName=ZCINEMA`;
+  let qrurl = `https://img.vietqr.io/image/TPB-61398625980-compact2.png?amount=${amount}&addInfo=thanh%20toan%20&accountName=ZCINEMA`;
   qr=$("#qr");
   qr.attr("src",qrurl)
   $('#confirmBox').fadeIn();

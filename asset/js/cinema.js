@@ -300,7 +300,18 @@ $(document).ready(function () {
                 success: function () {
                     alert("Thêm mới phòng thành công !!");
                     $("#addRoomModal").fadeOut();
-                    
+                     currentPage = 1; // Reset về trang đầu
+                     $.ajax({
+                        url: "http://localhost:8000/cinema/all",
+                        type: "GET",
+                        success: function (response) {
+                            allCinemas = response.cinemas;
+                            totalCinemas = allCinemas.length;
+                            renderCinemas();
+                            updatePaginationControls();
+                        }
+                    });
+
                     // Cập nhật danh sách phòng trong modal chi tiết rạp
                     $.ajax({
                         url: `http://localhost:8000/room/by_cinema`,
@@ -323,6 +334,7 @@ $(document).ready(function () {
                             });
                         }
                     });
+
                 },
                 error: function (xhr, status, error) {
                     console.error("Lỗi thêm phòng:", error);
@@ -487,7 +499,7 @@ $(document).ready(function () {
                     timer: 2000
                 });
                 $("#addCinemaModal").fadeOut();
-                
+                currentPage = 1
                 // Thêm rạp mới vào danh sách và cập nhật giao diện
                 $.ajax({
                     url: "http://localhost:8000/cinema/all",

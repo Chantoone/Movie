@@ -517,3 +517,15 @@
         margin-top: 10px;
         display: block;
     }
+ .toggle-btn {
+    margin-right: 10px;
+    padding: 8px 16px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.toggle-btn:hover {
+    background-color: #3498db;
+}
