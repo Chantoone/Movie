@@ -31,45 +31,32 @@ function initSlider(wrapperId) {
     dotsContainer.appendChild(dot);
   }
 
-  // function updateSlider() {
-  //   if (cards.length === 0) return;
-  //   const cardWidth = cards[0].offsetWidth;
-  //   const translateX = -currentPosition * cardWidth;
-  //   slider.style.transform = `translateX(${translateX}px)`;
-  //
-  //   // Cập nhật trạng thái active cho dots
-  //   const dots = dotsContainer.querySelectorAll('.dot');
-  //   dots.forEach((dot, index) => {
-  //     dot.classList.toggle('active', index === currentPosition);
-  //   });
-  // }
   function updateSlider() {
-  if (cards.length === 0) return;
+    if (cards.length === 0) return;
 
-  // Lấy CSS thực tế của thẻ .movie-card đầu tiên
-  const cardStyle = window.getComputedStyle(cards[0]);
-  const marginLeft = parseInt(cardStyle.marginLeft) || 0;
-  const marginRight = parseInt(cardStyle.marginRight) || 0;
+    // Lấy CSS thực tế của thẻ .movie-card đầu tiên
+    const cardStyle = window.getComputedStyle(cards[0]);
+    const marginLeft = parseInt(cardStyle.marginLeft) || 0;
+    const marginRight = parseInt(cardStyle.marginRight) || 0;
 
-  // Tính tổng chiều rộng thực tế của mỗi card = width + margin
-  const cardWidth = cards[0].offsetWidth + marginLeft + marginRight;
+    // Tính tổng chiều rộng thực tế của mỗi card = width + margin
+    const cardWidth = cards[0].offsetWidth + marginLeft + marginRight;
 
-  // Đảm bảo currentPosition không vượt quá maxPosition
-  if (currentPosition > maxPosition) {
-    currentPosition = maxPosition;
+    // Đảm bảo currentPosition không vượt quá maxPosition
+    if (currentPosition > maxPosition) {
+      currentPosition = maxPosition;
+    }
+
+    // Tính toán vị trí dịch chuyển
+    const translateX = -currentPosition * cardWidth;
+    slider.style.transform = `translateX(${translateX}px)`;
+
+    // Cập nhật trạng thái dot
+    const dots = dotsContainer.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentPosition);
+    });
   }
-
-  // Tính toán vị trí dịch chuyển
-  const translateX = -currentPosition * cardWidth;
-  slider.style.transform = `translateX(${translateX}px)`;
-
-  // Cập nhật trạng thái dot
-  const dots = dotsContainer.querySelectorAll('.dot');
-  dots.forEach((dot, index) => {
-    dot.classList.toggle('active', index === currentPosition);
-  });
-}
-
 
   document.getElementById(`prev-${wrapperId.split('-')[1]}`).addEventListener('click', function() {
     if (currentPosition > 0) {
@@ -97,14 +84,28 @@ $(document).ready(function () {
     success: function (response) {
       var slider = $("#hanhdong");
       response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          // If it starts with /static, prepend the server base URL
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          // If it already has http, use it directly
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          // Otherwise, assume it's a relative path and prepend the image directory
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          // Fallback for no poster
+          posterUrl = "../asset/image/post (1).jpg"; // Default image
+        }
+        
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hanh dong");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
         overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
+          window.location.href="detail.html?id=" + movie.id_movie
+          // window.location.href="detail.html"
+        })
         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
         card.append(img, overlay, info);
         slider.append(card);
@@ -125,14 +126,23 @@ $(document).ready(function () {
     success: function (response) {
       var slider = $("#hoathinh");
       response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          posterUrl = "../asset/image/post (1).jpg";
+        }
+
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hoat hinh");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
         overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
+          window.location.href="detail.html?id=" + movie.id_movie
+        })
         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
         card.append(img, overlay, info);
         slider.append(card);
@@ -153,14 +163,23 @@ $(document).ready(function () {
     success: function (response) {
       var slider = $("#hai");
       response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          posterUrl = "../asset/image/post (1).jpg";
+        }
+
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hai");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
         overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
+          window.location.href="detail.html?id=" + movie.id_movie
+        })
         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
         card.append(img, overlay, info);
         slider.append(card);
@@ -181,14 +200,23 @@ $(document).ready(function () {
     success: function (response) {
       var slider = $("#giadinh");
       response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          posterUrl = "../asset/image/post (1).jpg";
+        }
+
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim gia dinh");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
         overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
+          window.location.href="detail.html?id=" + movie.id_movie
+        })
         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
         card.append(img, overlay, info);
         slider.append(card);
@@ -209,14 +237,23 @@ $(document).ready(function () {
     success: function (response) {
       var slider = $("#kinhdi");
       response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          posterUrl = "../asset/image/post (1).jpg";
+        }
+
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim kinh di");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
         overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
+          window.location.href="detail.html?id=" + movie.id_movie
+        })
         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
         card.append(img, overlay, info);
         slider.append(card);
@@ -237,14 +274,23 @@ $(document).ready(function () {
     success: function (response) {
       var slider = $("#langman");
       response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          posterUrl = "../asset/image/post (1).jpg";
+        }
+
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim lang man");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
         overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
+          window.location.href="detail.html?id=" + movie.id_movie
+        })
         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
         card.append(img, overlay, info);
         slider.append(card);
@@ -265,14 +311,23 @@ $(document).ready(function () {
     success: function (response) {
       var slider = $("#khoahoc");
       response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          posterUrl = "../asset/image/post (1).jpg";
+        }
+
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim khoa hoc");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
         overlay.on("click", function (){
-                    window.location.href="detail.html?id=" + movie.id_movie
-                    // window.location.href="detail.html"
-                })
+          window.location.href="detail.html?id=" + movie.id_movie
+        })
         var info = $("<div></div>").addClass("info").append($("<h3></h3>").text(movie.name));
         card.append(img, overlay, info);
         slider.append(card);

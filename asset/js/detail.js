@@ -1,6 +1,6 @@
 import {checkToken} from "./checkToken.js";
 
-$(document).ready(function (){
+$(document).ready(function () {
     const queryString = window.location.search;
     // Tạo đối tượng URLSearchParams từ chuỗi query
     const urlParams = new URLSearchParams(queryString);
@@ -17,19 +17,51 @@ $(document).ready(function (){
 
     // Load movie details
     $.ajax({
-        url: "http://localhost:8000/movie/"+movieId,
+        url: "http://localhost:8000/movie/" + movieId,
         type: "GET",
         data: {id: movieId},
         success: function (response) {
+            console.log(response);
+            // Kiểm tra nếu response rỗng hoặc không có dữ liệu cần thiết
+            if (!response || !response.id_movie) {
+                $(".movie-info-container").html('<div class="error-message">Không thể tải thông tin phim. Vui lòng thử lại sau.</div>');
+                return;
+            }
+            
             var poster = $(".movie-poster");
-            var imgsrc="../asset/images/"+response.poster;
-            var img =$("<img>");
-            img.attr("src",imgsrc);
-            img.attr('alt',`poster phim ${response.id_movie}`);
+            
+            // Check if the poster path is an absolute path or a relative path
+            let imgSrc;
+            if (response.poster && response.poster.startsWith('/static')) {
+                // If it starts with /static, prepend the server base URL without /images
+                imgSrc = "http://localhost:8000" + response.poster;
+            } else if (response.poster && response.poster.startsWith('http')) {
+                // If it already has http, use it directly
+                imgSrc = response.poster;
+            } else if (response.poster) {
+                // Otherwise, assume it's a relative path and prepend the image directory
+                imgSrc = "../asset/images/" + response.poster;
+            } else {
+                // Fallback for no poster
+                imgSrc = "../asset/image/post (1).jpg"; // Default image
+            }
+            
+            // Thêm xử lý lỗi cho hình ảnh
+            var img = $("<img>");
+            img.attr("src", imgSrc);
+            img.attr('alt', `poster phim ${response.id_movie}`);
+            img.on('error', function() {
+                // Nếu không tải được ảnh từ đường dẫn đầu tiên
+                console.log("Không tải được ảnh từ: " + imgSrc);
+                if (imgSrc.includes('../asset/images/')) {
+                    // Thử đường dẫn khác nếu đường dẫn đầu tiên không hoạt động
+                    $(this).attr('src', "../asset/image/post (1).jpg");
+                }
+            });
             poster.prepend(img);
 
-            var divTiltle =$(".movie-info-text");
-            var h1 =$("<h1></h1>").text(response.name).attr('class',"movie-title").attr('id',response.id_movie);
+            var divTiltle = $(".movie-info-text");
+            var h1 = $("<h1></h1>").text(response.name).attr('class', "movie-title").attr('id', response.id_movie);
             divTiltle.prepend(h1);
 
             var div = $(".movie-info");
@@ -96,26 +128,25 @@ $(document).ready(function (){
             div.append(pTime);
 
             var state = response.state;
-            if (state=="NOW_SHOWING"){
-                var tmp=$(".movie-actions");
-                var button =$("<button></button>");
+            if (state == "NOW_SHOWING") {
+                var tmp = $(".movie-actions");
+                var button = $("<button></button>");
                 button.text("Chọn Ghế");
-                button.attr("class","choose-seat");
+                button.attr("class", "choose-seat");
                 tmp.append(button);
 
-                button.on("click",function () {
+                button.on("click", function () {
                     const token = localStorage.getItem("access_token");
-                    if (token){
+                    if (token) {
                         checkToken(token)
                             .then(data => {
-                                window.location.href="seat.html?id="+movieId;
+                                window.location.href = "seat.html?id=" + movieId;
                             })
-                            .catch(()=>{
-                                window.location.href="login.html";
-                        });
-                    }
-                    else{
-                        window.location.href="login.html";
+                            .catch(() => {
+                                window.location.href = "login.html";
+                            });
+                    } else {
+                        window.location.href = "login.html";
                     }
                 });
             }
@@ -124,13 +155,25 @@ $(document).ready(function (){
             loadRatingSummary(movieId);
             loadReviews(movieId, currentPage);
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Lỗi khi gọi API: ", error);
+            // Hiển thị thông báo lỗi cho người dùng
+            $(".movie-info-container").html('<div class="error-message">Không thể tải thông tin phim. Lỗi: ' + error + '</div>');
+            // Thêm CSS inline cho thông báo lỗi
+            $(".error-message").css({
+                'color': 'red',
+                'font-size': '18px',
+                'text-align': 'center',
+                'padding': '20px',
+                'border': '1px solid red',
+                'margin': '20px auto',
+                'max-width': '80%'
+            });
         }
     });
 
     // Xử lý sự kiện click vào sao đánh giá
-    $(document).on('click', '.star', function() {
+    $(document).on('click', '.star', function () {
         // Kiểm tra đăng nhập trước khi cho phép đánh giá
         const token = localStorage.getItem("access_token");
         if (!token) {
@@ -153,7 +196,7 @@ $(document).ready(function (){
     });
 
     // Xử lý gửi đánh giá
-    $('.rating-form').on('submit', function(e) {
+    $('.rating-form').on('submit', function (e) {
         e.preventDefault();
         
         const token = localStorage.getItem("access_token");
@@ -185,7 +228,7 @@ $(document).ready(function (){
                 description: description,
                 id_movie: movieId
             }),
-            success: function(response) {
+            success: function (response) {
                 // Xóa nội dung form và reset đánh giá
                 $('.rating-form textarea').val('');
                 $('.star').removeClass('selected');
@@ -197,7 +240,7 @@ $(document).ready(function (){
                 
                 alert("Cảm ơn bạn đã đánh giá phim!");
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error("Lỗi khi gửi đánh giá:", error);
                 alert("Không thể gửi đánh giá. Vui lòng thử lại sau!");
             }
@@ -205,7 +248,7 @@ $(document).ready(function (){
     });
 
     // Xử lý nút "Xem thêm đánh giá"
-    $('#loadMoreBtn').on('click', function(e) {
+    $('#loadMoreBtn').on('click', function (e) {
         e.preventDefault();
         
         if (currentPage < totalPages) {
@@ -222,7 +265,7 @@ $(document).ready(function (){
         $.ajax({
             url: `http://localhost:8000/review/movie/${movieId}/summary`,
             type: "GET",
-            success: function(response) {
+            success: function (response) {
                 if (response && response.averageScore !== undefined) {
                     // Cập nhật điểm trung bình và tổng số đánh giá
                     averageRating = response.averageScore;
@@ -250,7 +293,7 @@ $(document).ready(function (){
                     $('.star-display-large').html('☆☆☆☆☆');
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error("Lỗi khi tải tổng quan đánh giá:", error);
             }
         });
@@ -264,11 +307,11 @@ $(document).ready(function (){
         if (total > 0) {
             // Cập nhật thanh phân bố và phần trăm cho mỗi mức đánh giá
             for (let i = 1; i <= 5; i++) {
-                const count = ratingDistribution[i-1];
+                const count = ratingDistribution[i - 1];
                 const percentage = Math.round((count / total) * 100);
                 
-                $(`.rating-bar:nth-child(${6-i}) .progress`).css('width', `${percentage}%`);
-                $(`.rating-bar:nth-child(${6-i}) .percentage`).text(`${percentage}%`);
+                $(`.rating-bar:nth-child(${6 - i}) .progress`).css('width', `${percentage}%`);
+                $(`.rating-bar:nth-child(${6 - i}) .percentage`).text(`${percentage}%`);
             }
         }
     }
@@ -276,9 +319,9 @@ $(document).ready(function (){
     // Hàm tải đánh giá
     function loadReviews(movieId, page, append = false) {
         $.ajax({
-            url: `http://localhost:8000/review/movie/${movieId}?page=${page-1}&size=${pageSize}`,
+            url: `http://localhost:8000/review/movie/${movieId}?page=${page - 1}&size=${pageSize}`,
             type: "GET",
-            success: function(response) {
+            success: function (response) {
                 if (!append) {
                     // Xóa đánh giá cũ nếu không phải chế độ append
                     $('#reviewsContainer').empty();
@@ -298,7 +341,7 @@ $(document).ready(function (){
 
                 // Hiển thị đánh giá
                 if (response.reviews && response.reviews.length > 0) {
-                    response.reviews.forEach(function(review) {
+                    response.reviews.forEach(function (review) {
                         const reviewHtml = createReviewHtml(review);
                         $('#reviewsContainer').append(reviewHtml);
                     });
@@ -307,7 +350,7 @@ $(document).ready(function (){
                     $('#reviewsContainer').html('<p class="no-reviews">Chưa có đánh giá nào cho phim này. Hãy là người đầu tiên đánh giá!</p>');
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error("Lỗi khi tải đánh giá:", error);
                 if (!append) {
                     $('#reviewsContainer').html('<p class="error-message">Không thể tải đánh giá. Vui lòng thử lại sau!</p>');

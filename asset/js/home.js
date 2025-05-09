@@ -114,11 +114,24 @@ $(document).ready(function () {
         data:{state:"NOW_SHOWING"},
         success: function (data) {
             var btn=$("#prevBtn");
-            var bannerUrl="../asset/images/";
-            data.movies.forEach((movie,index) =>{
-                var urlimg=bannerUrl+movie.banner;
-                var slide= $('<div class="slide"></div>');;
-                var img=$("<img>").attr("src",urlimg)
+            data.movies.forEach((movie,index) => {
+                let bannerUrl;
+                if (movie.banner && movie.banner.startsWith('/static')) {
+                    // If it starts with /static, prepend the server base URL
+                    bannerUrl = "http://localhost:8000" + movie.banner;
+                } else if (movie.banner && movie.banner.startsWith('http')) {
+                    // If it already has http, use it directly
+                    bannerUrl = movie.banner;
+                } else if (movie.banner) {
+                    // Otherwise, assume it's a relative path and prepend the image directory
+                    bannerUrl = "../asset/images/" + movie.banner;
+                } else {
+                    // Fallback for no banner
+                    bannerUrl = "../asset/image/Banner_1.jpg"; // Default image
+                }
+                
+                var slide= $('<div class="slide"></div>');
+                var img=$("<img>").attr("src", bannerUrl);
                 slide.append(img);
                 btn.after(slide);
             })
@@ -131,7 +144,21 @@ $(document).ready(function () {
     success: function (response) {
       var slider = $("#new");
       response.movies.forEach(function (movie, index) {
-        var posterUrl = "../asset/images/" + movie.poster;
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          // If it starts with /static, prepend the server base URL
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          // If it already has http, use it directly
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          // Otherwise, assume it's a relative path and prepend the image directory
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          // Fallback for no poster
+          posterUrl = "../asset/image/post (1).jpg"; // Default image
+        }
+        
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hanh moi");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));
@@ -158,8 +185,21 @@ $(document).ready(function () {
       var slider = $("#hot");
 
       response.movies.slice(0,10).forEach(function (movie, index) {
+        let posterUrl;
+        if (movie.poster && movie.poster.startsWith('/static')) {
+          // If it starts with /static, prepend the server base URL
+          posterUrl = "http://localhost:8000" + movie.poster;
+        } else if (movie.poster && movie.poster.startsWith('http')) {
+          // If it already has http, use it directly
+          posterUrl = movie.poster;
+        } else if (movie.poster) {
+          // Otherwise, assume it's a relative path and prepend the image directory
+          posterUrl = "../asset/images/" + movie.poster;
+        } else {
+          // Fallback for no poster
+          posterUrl = "../asset/image/post (1).jpg"; // Default image
+        }
 
-        var posterUrl = "../asset/images/" + movie.poster;
         var card = $("<div></div>").addClass("movie-card");
         var img = $("<img>").attr("src", posterUrl).attr("alt", "phim hot");
         var overlay = $("<div></div>").addClass("overlay").append($("<span></span>").text("Đặt Vé"));

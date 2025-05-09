@@ -158,7 +158,22 @@ $(document).ready(function () {
                     url: "http://localhost:8000/movie/" + movie.id_movie,
                     type: "GET",
                     success: function (res) {
-                        let path = "../asset/images/" + res.poster;
+                        // Check if the poster path is an absolute path or a relative path
+                        let path;
+                        if (res.poster && res.poster.startsWith('/static')) {
+                            // If it starts with /static, prepend the server base URL
+                            path = "http://localhost:8000" + res.poster;
+                        } else if (res.poster && res.poster.startsWith('http')) {
+                            // If it already has http, use it directly
+                            path = res.poster;
+                        } else if (res.poster) {
+                            // Otherwise, assume it's a relative path and prepend the image directory
+                            path = "../asset/images/" + res.poster;
+                        } else {
+                            // Fallback for no poster
+                            path = "../asset/image/post (1).jpg"; // Default image
+                        }
+                        
                         $('#title').text(res.name);
                         $('#poster').attr("src", path);
                         $('#duration').text(res.time + " phút");
@@ -368,4 +383,3 @@ $(document).ready(function () {
         });
     });
 });
-
